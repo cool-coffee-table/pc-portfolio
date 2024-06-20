@@ -1,0 +1,122 @@
+import React from "react";
+import { FcSettings } from "react-icons/fc";
+import { useRecoilState } from "recoil";
+import { showModalsAtom } from "../atoms/ModalAtoms";
+
+export default function IconGrid() {
+  const [showModals, setShowModals] = useRecoilState(showModalsAtom);
+  const items = [
+    {
+      img: <img src={"./blue.png"} alt="" className="max-w-[45px] mx-auto" />,
+      name: "Projects",
+    },
+    {
+      img: (
+        <img src={"./Email-icon.png"} alt="" className="max-w-[45px] mx-auto" />
+      ),
+      name: "Contact",
+    },
+    {
+      img: (
+        <img
+          src={"./user-folder.png"}
+          alt=""
+          className="max-w-[45px] mx-auto"
+        />
+      ),
+      name: "About",
+    },
+    {
+      img: (
+        <img src={"./gear.png"} className="max-w-[45px] mx-auto scale-110" />
+      ),
+      name: "My Skills",
+    },
+  ];
+
+  const icons2 = [
+    {
+      img: (
+        <img src={"./green.png"} className="max-w-[45px] mx-auto scale-110" />
+      ),
+      name: "Socials",
+      // onClick: () => setShowModals((prev) => ({ ...prev, socials: true })),
+    },
+    {
+      img: (
+        <img
+          src={"./file-explorer.png"}
+          className="max-w-[45px] mx-auto scale-110"
+        />
+      ),
+      name: "File Explorer",
+      onClick: () => setShowModals((prev) => ({ ...prev, fileExplorer: true })),
+    },
+    {
+      img: (
+        <img src={"./notepad.png"} className="max-w-[45px] mx-auto scale-110" />
+      ),
+      name: "Notepad",
+      onClick: () => setShowModals((prev) => ({ ...prev, notes: true })),
+    },
+  ];
+
+  const icons3 = [
+    {
+      img: (
+        <img src={"./photos.png"} className="max-w-[45px] mx-auto scale-110" />
+      ),
+      name: "Backgrounds",
+      onClick: () => setShowModals((prev) => ({ ...prev, backgrounds: true })),
+    },
+    {
+      img: (
+        <img
+          src={"./Weather-icon.png"}
+          className="max-w-[45px] mx-auto scale-110"
+        />
+      ),
+      name: "Weather",
+      onClick: () => setShowModals((prev) => ({ ...prev, weather: true })),
+    },
+    {
+      img: (
+        <img src={"./welcome.png"} className="max-w-[45px] mx-auto scale-110" />
+      ),
+      name: "Welcome",
+      onClick: () => setShowModals((prev) => ({ ...prev, welcome: true })),
+    },
+  ];
+
+  return (
+    <div className="flex h-full relative z-10 text-white">
+      <div className="flex flex-col">
+        {items.map((icon) => (
+          <Icon img={icon.img} name={icon.name} />
+        ))}
+      </div>
+      <div className="flex flex-col">
+        {icons2.map((icon) => (
+          <Icon img={icon.img} name={icon.name} onClick={icon.onClick} />
+        ))}
+      </div>
+      <div className="flex flex-col">
+        {icons3.map((icon) => (
+          <Icon img={icon.img} name={icon.name} onClick={icon.onClick} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function Icon({ img, name, onClick }) {
+  return (
+    <div
+      className="flex flex-col items-center justify-around hover:bg-white border border-transparent hover:bg-opacity-20 hover:border-sky-200 h-20 w-20 transition-all cursor-pointer active:border-sky-200"
+      onDoubleClick={onClick}
+    >
+      <figure className="w-full pt-0.5 ">{img}</figure>
+      <p className="text-xs  subtle-shadow ">{name}</p>
+    </div>
+  );
+}
