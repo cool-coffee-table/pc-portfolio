@@ -5,18 +5,49 @@
   box-sizing: border-box;
 }
 
+:root {
+  color-scheme: dark;
+}
+
 @font-face {
   font-family: "os";
   src: url("./font.ttf") format("truetype");
 }
 
-:root {
-  color-scheme: dark;
+@font-face {
+  font-family: "os-bold";
+  src: url("./font-bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "os-semibold";
+  src: url("./font-semibold.ttf") format("truetype");
+}
+.bold {
+  font-family: "os-bold", sans-serif;
+}
+.semibold {
+  font-family: "os-semibold", sans-serif;
 }
 body {
   font-family: "os", sans-serif;
   background-color: #242424;
+  background-image: url("./bg-1.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
+
+
+
+#weather {
+
+  background-image: url("./weather-bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 .hover-highlight-light,
 .hover-highlight-dark {
   transition: all 200ms ease;

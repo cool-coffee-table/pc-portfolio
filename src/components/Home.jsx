@@ -1,5 +1,4 @@
 import React, {useEffect} from "react";
-import Background from "./Background";
 import Toolbar from "./Toolbar";
 import IconGrid from "./IconGrid";
 import Modal from "./Modal";
@@ -81,7 +80,6 @@ export default function Home() {
       )}
       {showModals.fileExplorer && <FileExplorer />}
       <IconGrid />
-      <Background />
       <Toolbar />
     </div>
   );

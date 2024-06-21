@@ -13,8 +13,8 @@ export default function App() {
     <LockScreen/>
     <Suspense fallback={<div className="h-screen w-screen bg-[#242424]"></div>}>
       <Home/>
-    </Suspense>
-    
+  
+    </Suspense>  
     
     </>
   );

@@ -21,12 +21,12 @@ export default function LockScreen() {
   return (
     <div
       id="lock-screen"
-      className={`inset-0 roboto overflow-hidden transition-all ${
+      className={`inset-0 overflow-hidden transition-all ${
         showLockScreen ? "" : "-translate-y-full opacity-0"
       }`}
     >
       <div className="relative h-full w-full overflow-hidden">
-        <p className="mt-8 text-center text-4xl font-semibold">
+        <p className="mt-8 text-center text-4xl bold">
           Welcome Back Cole
         </p>
         <p className="text-center mt-2 text-lg">
@@ -69,10 +69,10 @@ const Clock = () => {
 
   return (
     <div className="absolute bottom-20 left-12">
-      <p className="text-[112px] max-h-36 font-semibold lock-shadow">
+      <p className="text-[112px] max-h-36 bold lock-shadow">
         {formatTime(date)}
       </p>
-      <p className="text-5xl font-semibold lock-shadow pl-2">{`${formatDayOfWeek(
+      <p className="text-5xl bold lock-shadow pl-2">{`${formatDayOfWeek(
         date
       )}, ${formatMonth(date)} ${formatDay(date)}`}</p>
     </div>

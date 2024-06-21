@@ -9,6 +9,7 @@ import FileExplorerRoot from "../file-explorer-bodies/FileExplorerRoot";
 import { fileExplorerPathAtom, showFileExplorerFolderAtom } from "../atoms/FileExplorerAtom";
 import FileExplorerTaskbar from "./FileExplorerTaskbar";
 import Projects from "../file-explorer-bodies/Projects";
+import FileExplorerBody from "../file-explorer-components/FileExplorerBody"
 
 export default function FileExplorer() {
   const [isMaximized, setIsMaximized] = useState(false);
@@ -59,7 +60,7 @@ export default function FileExplorer() {
       <div className="relative h-full">
       <Taskbar id={"Explore"} toggleMaximized={toggleMaximized} close={handleFileExplorerClose}/>
       <FileExplorerTaskbar path={fileExplorerPath}/>
-      <ModalBody body={body} isMaximized={isMaximized} className="h-80"/>
+      <FileExplorerBody body={body} isMaximized={isMaximized}/>
       <div className="left-0 right-0 bg-[#242424] h-4 bottom-0 absolute border-t border-[#3a3a3a]"></div>
       </div>
       
