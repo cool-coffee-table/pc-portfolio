@@ -2,13 +2,26 @@ import React from "react";
 import { FcSettings } from "react-icons/fc";
 import { useRecoilState } from "recoil";
 import { showModalsAtom } from "../atoms/ModalAtoms";
+import { fileExplorerPathAtom, showFileExplorerFolderAtom } from "../atoms/FileExplorerAtom";
 
 export default function IconGrid() {
   const [showModals, setShowModals] = useRecoilState(showModalsAtom);
+  const [fileExplorerPath, setFileExplorerPath] = useRecoilState(fileExplorerPathAtom)
+  const [showFileExplorerFolder, setShowFileExplorerFolder] = useRecoilState(showFileExplorerFolderAtom)
+
+  const openSocials = () => {
+    setShowFileExplorerFolder({showRoot: false, showSocials: true, showProjects: false})
+    setShowModals((prev) => ({...prev, fileExplorer:true}))
+  }
+  const openProjects = () => {
+    setShowFileExplorerFolder({showRoot: false, showSocials: false, showProjects: true})
+    setShowModals((prev) => ({...prev, fileExplorer:true}))
+  }
   const items = [
     {
       img: <img src={"./blue.png"} alt="" className="max-w-[45px] mx-auto" />,
       name: "Projects",
+      onClick: openProjects,
     },
     {
       img: (
@@ -40,7 +53,7 @@ export default function IconGrid() {
         <img src={"./green.png"} className="max-w-[45px] mx-auto scale-110" />
       ),
       name: "Socials",
-      // onClick: () => setShowModals((prev) => ({ ...prev, socials: true })),
+      onClick: openSocials,
     },
     {
       img: (
@@ -92,17 +105,17 @@ export default function IconGrid() {
     <div className="flex h-full relative z-10 text-white">
       <div className="flex flex-col">
         {items.map((icon) => (
-          <Icon img={icon.img} name={icon.name} />
+          <Icon img={icon.img} name={icon.name} key={icon.name} onClick={icon.onClick}/>
         ))}
       </div>
       <div className="flex flex-col">
         {icons2.map((icon) => (
-          <Icon img={icon.img} name={icon.name} onClick={icon.onClick} />
+          <Icon img={icon.img} name={icon.name} key={icon.name} onClick={icon.onClick} />
         ))}
       </div>
       <div className="flex flex-col">
         {icons3.map((icon) => (
-          <Icon img={icon.img} name={icon.name} onClick={icon.onClick} />
+          <Icon img={icon.img} name={icon.name} key={icon.name} onClick={icon.onClick} />
         ))}
       </div>
     </div>
@@ -116,7 +129,7 @@ function Icon({ img, name, onClick }) {
       onDoubleClick={onClick}
     >
       <figure className="w-full pt-0.5 ">{img}</figure>
-      <p className="text-xs  subtle-shadow ">{name}</p>
+      <p className="text-xs  subtle-shadow icon-shadow">{name}</p>
     </div>
   );
 }

@@ -8,13 +8,14 @@ import Socials from "../file-explorer-bodies/Socials"
 import FileExplorerRoot from "../file-explorer-bodies/FileExplorerRoot";
 import { fileExplorerPathAtom, showFileExplorerFolderAtom } from "../atoms/FileExplorerAtom";
 import FileExplorerTaskbar from "./FileExplorerTaskbar";
+import Projects from "../file-explorer-bodies/Projects";
 
-export default function FileExplorer({close}) {
+export default function FileExplorer() {
   const [isMaximized, setIsMaximized] = useState(false);
   const [fileExplorerPath, setFileExplorerPath] = useRecoilState(fileExplorerPathAtom)
   const [showFileExplorerFolder, setShowFileExplorerFolder] = useRecoilState(showFileExplorerFolderAtom)
-
-
+  const [showModals, setShowModals] = useRecoilState(showModalsAtom)
+  useDragger("file-explorer", "Explore", isMaximized);
   const [body , setBody] = useState(<FileExplorerRoot/>)
 
   useEffect(() => {
@@ -27,12 +28,16 @@ export default function FileExplorer({close}) {
       setFileExplorerPath("C:Users/ColeMorgan/Desktop/socials")
       setBody(<Socials/>)
     }
-    // else if (showFileExplorerFolder.showProjects) {
-    //   setShowFileExplorerFolder(<Socials/>)
-    // }
+    else if (showFileExplorerFolder.showProjects) {
+      setFileExplorerPath("C:Users/ColeMorgan/Desktop/socials")
+      setBody(<Projects/>)
+    }
   },[showFileExplorerFolder])
  
-  useDragger("file-explorer", "Explore", isMaximized);
+  const handleFileExplorerClose = () => {
+    setShowModals((prev) => ({...prev, fileExplorer:false}))
+    setShowFileExplorerFolder({showRoot:true, showSocials: false, showProjects:false})
+  }
 
   const toggleMaximized = () => {
     setIsMaximized((prevMaximized) => !prevMaximized);
@@ -52,7 +57,7 @@ export default function FileExplorer({close}) {
       }}
     >
       <div className="relative h-full">
-      <Taskbar id={"Explore"} toggleMaximized={toggleMaximized} close={close}/>
+      <Taskbar id={"Explore"} toggleMaximized={toggleMaximized} close={handleFileExplorerClose}/>
       <FileExplorerTaskbar path={fileExplorerPath}/>
       <ModalBody body={body} isMaximized={isMaximized} className="h-80"/>
       <div className="left-0 right-0 bg-[#242424] h-4 bottom-0 absolute border-t border-[#3a3a3a]"></div>

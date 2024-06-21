@@ -1,39 +1,65 @@
-import React, { useState, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from "react";
+import Quill from "quill";
+import "quill/dist/quill.snow.css";
 
-export default function Notepad() {
-  const [notes, setNotes] = useState("");
+const SAVE_INTERVAL_MS = 2000;
+const TOOLBAR_OPTIONS = [
+  [{ header: [1, 2, 3, 4, 5, 6, false] }],
+  [{ font: [] }],
+  [{ list: "ordered" }, { list: "bullet" }],
+  ["bold", "italic", "underline"],
+  [{ color: [] }, { background: [] }],
+  [{ script: "sub" }, { script: "super" }],
+  [{ align: [] }],
+  [ "code-block"],
+  ["clean"],
+];
 
-  // Function to save notes to local storage
-  const saveNotesToLocalStorage = (newNotes) => {
-    localStorage.setItem("notepad-notes", newNotes);
-  };
+const TextEditor = () => {
+  const [quill, setQuill] = useState(null);
 
-  // Function to load notes from local storage
-  const loadNotesFromLocalStorage = () => {
-    const savedNotes = localStorage.getItem("notepad-notes");
-    if (savedNotes) {
-      setNotes(savedNotes);
-    }
-  };
+  const editorRef = useCallback((wrapper) => {
+    if (!wrapper) return;
+    const editorElement = document.createElement("div");
+    wrapper.innerHTML = ""; // Clear any previous content
+    wrapper.append(editorElement);
 
-  // Use effect to load notes on mount
-  useEffect(() => {
-    loadNotesFromLocalStorage();
+    const q = new Quill(editorElement, {
+      theme: "snow",
+      modules: { toolbar: TOOLBAR_OPTIONS },
+    });
+    // Enable the editor after initialization
+    q.enable(true);
+    setQuill(q);
   }, []);
 
-  // Update local storage whenever notes change
   useEffect(() => {
-    saveNotesToLocalStorage(notes);
-  }, [notes]);
+    if (!quill) return;
+    const interval = setInterval(() => {
+      localStorage.setItem("document", quill.root.innerHTML);
+    }, SAVE_INTERVAL_MS);
+    return () => {
+      clearInterval(interval);
+    };
+  }, [quill]);
 
-  return (
-    <div className="p-3 h-full overflow-y-scroll">
-      <p className='text-lg'>Notepad! Your notes will be saved in the browser.</p>
-      <textarea
-        className='h-full w-full mt-3 bg-[#3a3a3a] outline-none p-2 text-white rounded-sm'
-        value={notes}
-        onChange={(e) => setNotes(e.target.value)}
-      />
-    </div>
-  );
-}
+  useEffect(() => {
+    if (!quill) return;
+    const savedContent = localStorage.getItem("document");
+    if (savedContent) {
+      quill.root.innerHTML = savedContent;
+    }
+    // Cleanup function
+    return () => {
+      quill.off("text-change");
+      quill.off("selection-change");
+      quill.off("editor-change");
+      quill.off("selection-change");
+      setQuill(null);
+    };
+  }, [quill]);
+
+  return <div className="h-full relative z-50" ref={editorRef}></div>;
+};
+
+export default TextEditor;

@@ -1,61 +1,22 @@
-import React, { useEffect } from "react";
+import React, { Suspense } from "react";
 import "./App.css";
-import Background from "./components/Background";
-import Toolbar from "./components/Toolbar";
-import IconGrid from "./components/IconGrid";
-import Modal from "./components/Modal";
-import Welcome from "./modal-bodies/Welcome";
-import WeatherApp from "./modal-bodies/WeatherApp";
+import LockScreen from "./components/LockScreen";
+import { showLockScreenAtom } from "./atoms/LockScreenAtom";
 import { useRecoilState } from "recoil";
-import { weatherAtom, weatherLocationAtom } from "./atoms/WeatherAtom";
-import axios from "axios";
-import BackgroundSelector from "./modal-bodies/BackgroundSelector";
-import { showModalsAtom } from "./atoms/ModalAtoms";
-import Notepad from "./modal-bodies/Notepad";
-import Socials from "./file-explorer-bodies/Socials";
-import FileExplorerRoot from "./file-explorer-bodies/FileExplorerRoot";
-import FileExplorer from "./components/FileExplorer";
+const Home = React.lazy(() => import('./components/Home'));
 
 export default function App() {
-  const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
-  const [weather, setWeather] = useRecoilState(weatherAtom);
-  const [weatherLocation, setWeatherLocation] = useRecoilState(weatherLocationAtom)
-  const [showModals, setShowModals] = useRecoilState(showModalsAtom)
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${weatherLocation}&appid=${apiKey}`;
-  
-  
-
-  const fetchWeather = async () => {
-    try {
-      const response = await axios.get(url);
-      setWeather(response.data);
-    } catch (err) {;
-    console.log(err)}
-  };
-
-  useEffect(() => {
-    fetchWeather();
-  }, []);
-
-  const closeModals =  {
-    closeWelcome: () => setShowModals((prev) => ({...prev, welcome:false})),
-    closeBackgrounds: () =>  setShowModals((prev) => ({...prev, backgrounds:false})),
-    closeNotes: () =>  setShowModals((prev) => ({...prev, notes:false})),
-    closeWeather: () =>  setShowModals((prev) => ({...prev, weather:false})),
-    closeFileExplorer: () =>  setShowModals((prev) => ({...prev, fileExplorer:false})),
-   
-  }
+  const [showLockScreen, setShowLockScreen] = useRecoilState(showLockScreenAtom);
 
   return (
-    <div className="max-h-screen h-screen  w-screen relative flex flex-col select-none overflow-hidden">
-      {showModals.welcome && <Modal id={"welcomeModal"} childId={"Welcome"} body={<Welcome />} close={closeModals.closeWelcome}/>}
-      {showModals.weather && <Modal id={"weatherApp"} childId={"Weather"} body={<WeatherApp />}close={closeModals.closeWeather}/>}
-      {showModals.backgrounds && <Modal id={"backgroundSelector"} childId={"Backgrounds"} body={<BackgroundSelector/>} close={closeModals.closeBackgrounds}/>}
-      {showModals.notes && <Modal id={"notepadApp"} childId={"Notepad"} body={<Notepad/>} close={closeModals.closeNotes}/>}
-      {showModals.fileExplorer && <FileExplorer close={closeModals.closeFileExplorer}/>}
-      <IconGrid />
-      <Background />
-      <Toolbar />
-    </div>
+   <>
+    <LockScreen/>
+    <Suspense fallback={<div className="h-screen w-screen bg-[#242424]"></div>}>
+      <Home/>
+    </Suspense>
+    
+    
+    </>
   );
+  
 }

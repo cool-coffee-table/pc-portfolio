@@ -5,12 +5,15 @@ import Clock from "../ToolbarComponents/Clock";
 import Weather from "../ToolbarComponents/Weather";
 import ControlCenter from "../ToolbarComponents/ControlCenter";
 import ToolbarApps from "../ToolbarComponents/ToolbarApps";
+import { showLockScreenAtom } from "../atoms/LockScreenAtom";
+import { useRecoilState } from "recoil";
 
 export default function Toolbar() {
+  const [showLockScreen, setShowLockScreen] = useRecoilState(showLockScreenAtom);
   return (
-    <div className="relative z-50 w-full h-[44px] bg-black text-white bg-opacity-85 flex items-center justify-between">
+    <div className="absolute backdrop-blur-xl bottom-0 z-50 w-full h-[44px] bg-black text-white bg-opacity-60 flex items-center justify-between">
       <div className="flex h-full items-center">
-        <span className="px-2.5 hover:bg-slate-600 h-full flex items-center cursor-pointer">
+        <span className="px-2.5 hover:bg-slate-600 h-full flex items-center cursor-pointer" onClick={() => setShowLockScreen(true)}>
           <FaFortAwesome />
         </span>
         <ToolbarApps/>

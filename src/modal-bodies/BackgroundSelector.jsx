@@ -23,27 +23,27 @@ export default function BackgroundSelector() {
   }
   return (
     <div className="p-4 overflow-y-scroll max-h-full">
-      <h2 className="text-center text-2xl underline">Select A Background</h2>
+      <h2 className="text-center text-2xl font-s">Click To Select Background</h2>
       <ul className="flex flex-col justify-center items-center mb-4">
         <div className="mt-4">
         <figure className="cursor-pointer" onClick={setClouds}>
-          <img src="./clouds-bg.png" alt="" className="w-full max-w-[600px]"/>
+          <img src="./clouds-bg.png" alt="" className="w-full max-w-[600px] rounded-md"/>
         </figure>
         </div>
         <div className="mt-4">
         <figure className="cursor-pointer" onClick={setCells}>
-          <img src="./cells-bg.png" alt="" className="w-full max-w-[600px]"/>
+          <img src="./cells-bg.png" alt="" className="w-full max-w-[600px] rounded-md"/>
         </figure>
         </div>
         <div className="mt-4">
         <figure className="cursor-pointer" onClick={setFog}>
-          <img src="./fog-bg.png" alt="" className="w-full max-w-[600px]"/>
+          <img src="./fog-bg.png" alt="" className="w-full max-w-[600px] rounded-md"/>
         </figure>
         
         </div>
         <div className="mt-4">
         <figure className="cursor-pointer" onClick={setGlobe}>
-          <img src="./globe-bg.png" alt="" className="w-full max-w-[600px]"/>
+          <img src="./globe-bg.png" alt="" className="w-full max-w-[600px] rounded-md"/>
         </figure>
         
         </div>

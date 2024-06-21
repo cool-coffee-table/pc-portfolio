@@ -20,7 +20,7 @@ export default function Modal({ id, childId, body, close }) {
       className="absolute bg-[#242424] text-white min-w-[400px] bs transition-drag"
       style={{
         top: isMaximized ? "0" : "50%",
-        zIndex: isMaximized ? "50" : "20",
+        zIndex: isMaximized ? "40" : "20",
         left: isMaximized ? "0" : "50%",
         transform: isMaximized ? "" : "translateY(-50%) translateX(-50%)",
         bottom: isMaximized ? "40px" : "",

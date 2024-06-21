@@ -85,7 +85,7 @@ function VantaBackground({ effect }) {
     };
   }, [effect]);
 
-  return <div ref={vantaRef} className="absolute inset-0"></div>;
+  return <div ref={vantaRef} className="absolute inset-0 bg-[#242424]"></div>;
 }
 
 export default function Background() {

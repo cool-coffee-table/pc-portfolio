@@ -4,7 +4,7 @@ import { FaArrowUp } from "react-icons/fa";
 
 export default function FileExplorerTaskbar({path}) {
   return (
-    <div className="h-10 bg-[#171717] flex items-center px-2 text-sm">
+    <div className="h-[44px] bg-[#171717] flex items-center px-2 text-sm">
         <div className="flex text-[#dddddd]">
             <span className='mx-1'><FaArrowLeft/></span>
             <span className='mx-1'><FaArrowRight/></span>
