@@ -46,10 +46,10 @@ function Clock() {
   }, []);
 
   return (
-    <>
+    <div className="">
       <p>{time}</p>
       <p className="mt-0.5">{date}</p>
-    </>
+    </div>
   );
 }
 

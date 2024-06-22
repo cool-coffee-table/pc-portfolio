@@ -21,7 +21,8 @@ export default function Toolbar() {
       <div className="flex  h-full">
         <Weather/>
         <ControlCenter/>
-        <div className="text-xs w-[88px] hover:bg-slate-600 flex flex-col justify-center items-center cursor-pointer">
+        <div className="text-xs w-[88px] hover:bg-slate-600 flex flex-col justify-center items-center cursor-pointer relative">
+        <div className="absolute left-0 right-0 bottom-[100%] -top-96 bg-black"></div>
           <Clock />
         </div>
       </div>

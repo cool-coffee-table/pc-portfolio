@@ -28,6 +28,7 @@ export default function IconGrid() {
         <img src={"./Email-icon.png"} alt="" className="max-w-[45px] mx-auto" />
       ),
       name: "Contact",
+      onClick: () => setShowModals((prev) => ({ ...prev, contact: true })),
     },
     {
       img: (

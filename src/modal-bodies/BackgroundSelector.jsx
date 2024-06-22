@@ -26,12 +26,12 @@ export default function BackgroundSelector() {
       </h2>
       <div className="flex justify-between">
         <ul className="flex flex-col flex-wrap justify-between mb-4">
-          {images.slice(0, 4).map((img) => (
+          {images.slice(0, images.length /2 ).map((img) => (
           <Background key={img} img={img} setBg={() => setBg(img)}/>
           ))}
         </ul>
         <ul className="flex flex-col flex-wrap justify-between mb-4">
-          {images.slice(4).map((img) => (
+          {images.slice(images.length / 2 ).map((img) => (
             <Background key={img} img={img} setBg={() => setBg(img)}/>
           ))}
         </ul>
@@ -40,16 +40,14 @@ export default function BackgroundSelector() {
   );
 }
 
-// onClick={setBg={() => setBg(img)}}
-
 function Background({ img, setBg }) {
   return (
-    <figure className="cursor-pointer mt-2" onClick={setBg}>
+    <figure className="cursor-pointer mt-1" onClick={setBg}>
       <img
         src={img}
         alt="bg"
         key={img}
-        className="w-full max-w-[180px] rounded-md"
+        className="w-full max-w-[181px] rounded-md"
       />
     </figure>
   );

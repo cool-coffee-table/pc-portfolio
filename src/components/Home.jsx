@@ -12,6 +12,7 @@ import { showModalsAtom } from "../atoms/ModalAtoms";
 import Notepad from "../modal-bodies/Notepad";
 
 import FileExplorer from "./FileExplorer";
+import Contact from "../modal-bodies/Contact";
 
 
 export default function Home() {
@@ -43,6 +44,8 @@ export default function Home() {
     closeWeather: () => setShowModals((prev) => ({ ...prev, weather: false })),
     closeFileExplorer: () =>
       setShowModals((prev) => ({ ...prev, fileExplorer: false })),
+    closeContact: () =>
+      setShowModals((prev) => ({ ...prev, contact: false })),
   };
   return (
     <div className="max-h-screen h-screen  w-screen relative flex flex-col select-none overflow-hidden">
@@ -79,6 +82,7 @@ export default function Home() {
         />
       )}
       {showModals.fileExplorer && <FileExplorer />}
+      {showModals.contact && <Modal id={"contactModal"} childId={"Contact"} body={<Contact/>} close={closeModals.closeContact}/>}
       <IconGrid />
       <Toolbar />
     </div>
