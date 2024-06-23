@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import Toolbar from "./Toolbar";
 import IconGrid from "./IconGrid";
 import Modal from "./Modal";
@@ -13,7 +13,9 @@ import Notepad from "../modal-bodies/Notepad";
 
 import FileExplorer from "./FileExplorer";
 import Contact from "../modal-bodies/Contact";
-
+import About from "../modal-bodies/About";
+import ControlCenterModal from "./ControlCenterModal";
+import { screenFiltersAtom } from "../atoms/ControlCenterAtoms";
 
 export default function Home() {
   const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
@@ -44,9 +46,17 @@ export default function Home() {
     closeWeather: () => setShowModals((prev) => ({ ...prev, weather: false })),
     closeFileExplorer: () =>
       setShowModals((prev) => ({ ...prev, fileExplorer: false })),
-    closeContact: () =>
-      setShowModals((prev) => ({ ...prev, contact: false })),
+    closeContact: () => setShowModals((prev) => ({ ...prev, contact: false })),
+    closeAbout: () => setShowModals((prev) => ({ ...prev, about: false })),
   };
+
+  const [screenFilters, setScreenFilters] = useRecoilState(screenFiltersAtom);
+
+  useEffect(() => {
+    document.body.style.filter = `brightness(${screenFilters.brightness}) grayscale(${screenFilters.grayscale}) contrast(${screenFilters.contrast}) saturate(${screenFilters.saturation})`;
+    document.body.style.backdropFilter = `brightness(${screenFilters.brightness}) grayscale(${screenFilters.grayscale}) contrast(${screenFilters.contrast}) saturate(${screenFilters.saturation})`;
+  }, [screenFilters]);
+
   return (
     <div className="max-h-screen h-screen  w-screen relative flex flex-col select-none overflow-hidden">
       {showModals.welcome && (
@@ -82,9 +92,25 @@ export default function Home() {
         />
       )}
       {showModals.fileExplorer && <FileExplorer />}
-      {showModals.contact && <Modal id={"contactModal"} childId={"Contact"} body={<Contact/>} close={closeModals.closeContact}/>}
+      {showModals.contact && (
+        <Modal
+          id={"contactModal"}
+          childId={"Contact"}
+          body={<Contact />}
+          close={closeModals.closeContact}
+        />
+      )}
+      {showModals.about && (
+        <Modal
+          id={"aboutModal"}
+          childId={"About"}
+          body={<About />}
+          close={closeModals.closeAbout}
+        />
+      )}
       <IconGrid />
       <Toolbar />
+      <ControlCenterModal />
     </div>
   );
 }

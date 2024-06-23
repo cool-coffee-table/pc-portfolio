@@ -1,13 +1,20 @@
 import React, { useState } from "react";
-import { FaWifi, FaVolumeUp } from "react-icons/fa";
+import { FaWifi, FaVolumeUp,  } from "react-icons/fa";
 
-import { IoBatteryFull } from "react-icons/io5";
+import { IoBatteryFull, IoBatteryCharging } from "react-icons/io5";
+import { useRecoilState } from "recoil";
+import { isControlCenterOpenAtom } from "../atoms/ControlCenterAtoms";
+
 
 export default function ControlCenter() {
-  const [showControlCenter, setShowControlCenter] = useState(false)
+  const [isControlCenterOpen, setControlCenterOpen] = useRecoilState(isControlCenterOpenAtom)
+  
   return (
     <div className="relative">
-      <div className="px-1.5 hover:bg-slate-600 flex items-center h-full cursor-pointer" onClick={() => setShowControlCenter(!showControlCenter)}>
+      <div
+        className="px-1.5 hover:bg-slate-600 flex items-center h-full cursor-pointer"
+        onClick={() => setControlCenterOpen(!isControlCenterOpen)}
+      >
         <span className="mx-1.5 text-sm">
           <FaWifi />
         </span>
@@ -18,7 +25,6 @@ export default function ControlCenter() {
           <IoBatteryFull />
         </span>
       </div>
-      <div className={`absolute -top-96 bottom-[125%] z-20 -left-60 -right-20  bg-[#242424] rounded-md transition-all ${showControlCenter ? "-top-96 " : "top-12 opacity-0"}`}></div>
     </div>
   );
 }
