@@ -4,12 +4,12 @@ import { IoIosAirplane, IoIosContrast } from "react-icons/io";
 import { MdEnergySavingsLeaf } from "react-icons/md";
 import { FaBluetoothB, FaMoon, FaWifi} from 'react-icons/fa';
 import { useRecoilState } from 'recoil';
-import { isControlCenterOpenAtom, screenFiltersAtom } from '../atoms/ControlCenterAtoms';
+import { screenFiltersAtom, toolbarModalsOpenAtom } from '../atoms/ControlCenterAtoms';
 import { BsBrightnessHigh } from "react-icons/bs";
 
 export default function ControlCenterModal() {
 
-  const [isControlCenterOpen, setControlCenterOpen] = useRecoilState(isControlCenterOpenAtom)
+  const [toolbarModalsOpen, setToolbarModalsOpen] = useRecoilState(toolbarModalsOpenAtom)
   const [screenFilters, setScreenFilters] = useRecoilState(screenFiltersAtom)
 
 
@@ -22,7 +22,7 @@ export default function ControlCenterModal() {
   return (
     <div
     className={`absolute bottom-14 right-3 w-[390px] bg-[#242424] rounded-md border border-[#424242] overflow-hidden transition-all ${
-      isControlCenterOpen ? " z-50" : " opacity-0 translate-y-20 z-0"
+      toolbarModalsOpen.controlCenter ? " z-50" : " opacity-0 translate-y-20 z-0"
     }`}
   >
     <div className="w-full flex justify-between flex-wrap  p-5 ">

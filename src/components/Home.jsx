@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import Toolbar from "./Toolbar";
 import IconGrid from "./IconGrid";
 import Modal from "./Modal";
-import Welcome from "../modal-bodies/Welcome";
 import WeatherApp from "../modal-bodies/WeatherApp";
 import { useRecoilState } from "recoil";
 import { weatherAtom, weatherLocationAtom } from "../atoms/WeatherAtom";
@@ -14,8 +13,10 @@ import Notepad from "../modal-bodies/Notepad";
 import FileExplorer from "./FileExplorer";
 import Contact from "../modal-bodies/Contact";
 import About from "../modal-bodies/About";
+import Skills from "../modal-bodies/Skills";
 import ControlCenterModal from "./ControlCenterModal";
 import { screenFiltersAtom } from "../atoms/ControlCenterAtoms";
+import Calendar from "./Calendar";
 
 export default function Home() {
   const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
@@ -39,7 +40,7 @@ export default function Home() {
   }, []);
 
   const closeModals = {
-    closeWelcome: () => setShowModals((prev) => ({ ...prev, welcome: false })),
+    closeSkills: () => setShowModals((prev) => ({ ...prev, skills: false })),
     closeBackgrounds: () =>
       setShowModals((prev) => ({ ...prev, backgrounds: false })),
     closeNotes: () => setShowModals((prev) => ({ ...prev, notes: false })),
@@ -59,14 +60,6 @@ export default function Home() {
 
   return (
     <div className="max-h-screen h-screen  w-screen relative flex flex-col select-none overflow-hidden">
-      {showModals.welcome && (
-        <Modal
-          id={"welcomeModal"}
-          childId={"Welcome"}
-          body={<Welcome />}
-          close={closeModals.closeWelcome}
-        />
-      )}
       {showModals.weather && (
         <Modal
           id={"weatherApp"}
@@ -108,9 +101,12 @@ export default function Home() {
           close={closeModals.closeAbout}
         />
       )}
+      {showModals.skills && <Modal id={"skillsModal"} childId={"Skills"} body={<Skills />} close={closeModals.closeSkills} />}
+      <Calendar/>
       <IconGrid />
       <Toolbar />
       <ControlCenterModal />
+
     </div>
   );
 }

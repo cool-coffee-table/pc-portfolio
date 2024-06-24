@@ -8,13 +8,13 @@ export default function Socials() {
     {
       name: "Github",
       icon: <FaGithub />,
-      link: "https://github.com/",
+      link: "https://github.com/colemmorgan",
       size: "24 kb",
     },
     {
       name: "LinkedIn",
       icon: <FaLinkedin />,
-      link: "https://github.com/",
+      link: "https://www.linkedin.com/in/cole-morgan-/",
       size: "12 kb",
     },
     {

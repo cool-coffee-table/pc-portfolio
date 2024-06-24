@@ -11,34 +11,26 @@ export default function Contact() {
   const [fields, setFields] = useState({name:"",email:"",message:""})
 
   const sendEmail = () => {
-    let didEmailSend = false;
     emailjs
       .sendForm(service, template, formRef.current, { publicKey: publicKey_ })
       .then(
         () => {
-          didEmailSend = true;
+          toast.success("Your message was sent!", {position: 'top-center', autoClose: 3000, theme: "dark"})
+          clearFields()
         },
         (error) => {
-          console.log("FAILED...", error);
+          toast.error("The messaging service is currently down", {position: 'top-center', autoClose: 3000, theme: "dark"})
         }
       );
-
-    return didEmailSend;
   };
 
   const handleSumbit = (e) => {
     e.preventDefault()
     if(fields.name == "" || fields.message == "" || fields.email == "") {
-        toast.error("Please fill out all fields", {position: 'top-center', autoClose: 3000, theme: "dark"})
+        toast.error("Please fill out all fields.", {position: 'top-center', autoClose: 3000, theme: "dark"})
         return
     }
-    const formSent = sendEmail()
-    if (formSent) {
-      toast.success("Your message was sent!", {position: 'top-center', autoClose: 3000, theme: "dark"})
-    }
-    else {
-      toast.error("The messaging service is currently down", {position: 'top-center', autoClose: 3000, theme: "dark"})
-    }
+    sendEmail()
   }
 
   const clearFields = () => {
@@ -49,9 +41,12 @@ export default function Contact() {
     <div className="pt-3 px-3">
       <form action="" className="max-w-[700px] mx-auto" ref={formRef} >
         <div className="flex justify-between items-center border-b border-[#434343] pb-3">
-          <button className="text-sm bg-blue-600 hover:bg-opacity-75 transition-all py-1.5 px-3 rounded-sm" onClick={(e) => handleSumbit(e)}>
+          <div className="flex items-center">
+          <button className="text-sm bg-blue-600 hover:bg-opacity-75 transition-all py-1.5 px-3 rounded-sm mr-3" onClick={(e) => handleSumbit(e)}>
             Send Message
           </button>
+          <p className="text-sm">Recipient: Cole Morgan</p>
+          </div>
           <span className="text-lg text-[#dddddd] cursor-pointer hover:opacity-80 transition-all" onClick={clearFields}>
             <FaRegTrashAlt />
           </span>

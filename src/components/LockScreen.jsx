@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useRecoilState } from "recoil";
 import { showLockScreenAtom } from "../atoms/LockScreenAtom";
-import GithubContributions from "./GithubContributions";
+import GithubContributions from "../lock-screen-widgets/GithubContributions";
+import CollegeFootballSchedule from "../lock-screen-widgets/CollegeFootballSchedule";
+import LockscreenWeather from "../lock-screen-widgets/LockscreenWeather";
 
 const LockScreen = () => {
   const [showLockScreen, setShowLockScreen] = useRecoilState(showLockScreenAtom);
@@ -37,7 +39,9 @@ const LockScreen = () => {
         >
           Sign In
         </span>
+        <LockscreenWeather/>
         <GithubContributions/>
+        <CollegeFootballSchedule/>
         <Clock />
       </div>
     </div>

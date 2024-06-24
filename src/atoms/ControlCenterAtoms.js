@@ -1,8 +1,8 @@
 import { atom } from 'recoil';
 
-export const isControlCenterOpenAtom = atom({
-    key: 'isControlCenterOpenAtom',
-    default: false
+export const toolbarModalsOpenAtom = atom({
+    key: 'toolbarModalsOpen',
+    default: {controlCenter: false, calendar: false}
 })
 
 

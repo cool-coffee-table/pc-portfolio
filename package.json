@@ -12,6 +12,7 @@
   "dependencies": {
     "@emailjs/browser": "^4.3.3",
     "axios": "^1.7.2",
+    "cfb.js": "^4.3.2",
     "quill": "^2.0.2",
     "react": "^18.2.0",
     "react-dnd": "^16.0.1",

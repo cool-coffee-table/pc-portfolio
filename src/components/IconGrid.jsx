@@ -55,12 +55,6 @@ export default function IconGrid() {
       name: "About",
       onClick: () => setShowModals((prev) => ({ ...prev, about: true })),
     },
-    {
-      img: (
-        <img src={"./gear.png"} className="max-w-[45px] mx-auto scale-110" />
-      ),
-      name: "My Skills",
-    },
   ];
 
   const icons2 = [
@@ -110,15 +104,15 @@ export default function IconGrid() {
     },
     {
       img: (
-        <img src={"./welcome.png"} className="max-w-[45px] mx-auto scale-110" />
+        <img src={"./gear.png"} className="max-w-[45px] mx-auto scale-110" />
       ),
-      name: "Welcome",
-      onClick: () => setShowModals((prev) => ({ ...prev, welcome: true })),
+      name: "My Skills",
+      onClick: () => setShowModals((prev) => ({ ...prev, skills: true })),
     },
   ];
 
   return (
-    <div className="flex h-full relative z-10 text-white">
+    <div className="flex h-full relative  text-white">
       <div className="flex flex-col">
         {items.map((icon) => (
           <Icon

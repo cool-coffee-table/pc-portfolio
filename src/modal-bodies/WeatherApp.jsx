@@ -50,23 +50,23 @@ export default function WeatherApp() {
           />
         </div>
         {weather && (
-          <div className="mt-4">
+          <div className="mt-2">
             <p className="text-center text-6xl">
               {kelvinToF(weather.main.temp)}°F
             </p>
             <p className="text-center text-xl mt-1">
               {weather.weather[0].description}
             </p>
-            <div className="flex mt-6 flex-wrap justify-between">
-              <p className="mb-2">Humidity: {weather.main.humidity}%</p>
-              <p className="mb-2">
+            <div className="flex mt-5 flex-wrap">
+              <p className="mb-2 w-1/3">Humidity: {weather.main.humidity}%</p>
+              <p className="mb-2 w-1/3">
                 Feels Like: {kelvinToF(weather.main.feels_like)}°F
               </p>
-              <p className="mb-2">Wind: {weather.wind.speed} MPH</p>
-              {/* <p className="mb-2">Gust: {weather.wind.gust} MPH</p>
-            <p className="mb-2">Sunrise: {convertUnixTo12HourFormat(weather.sys.sunrise)}</p>
-            <p className="mb-2">Sunset: {convertUnixTo12HourFormat(weather.sys.sunset)}</p>
-            <p className="mb-2">Visibility: {weather.visibility / 1000} KM</p>
+              <p className="mb-2 w-1/3 text-right">Wind: {weather.wind.speed} MPH</p>
+              <p className="mb-2 w-1/3">Gust: {weather.wind.gust ? weather.wind.gust + " MPH": "No Data" } </p>
+            <p className="mb-2 w-1/3">Sunrise: {convertUnixTo12HourFormat(weather.sys.sunrise)}</p>
+            <p className="mb-2 w-1/3 text-right">Sunset: {convertUnixTo12HourFormat(weather.sys.sunset)}</p>
+            {/* <p className="mb-2">Visibility: {weather.visibility / 1000} KM</p>
             <p className="mb-2">Longitude: {weather.coord.lon.toFixed(2)}</p>
             <p className="mb-2">Latitude: {weather.coord.lat.toFixed(2)}</p> */}
             </div>

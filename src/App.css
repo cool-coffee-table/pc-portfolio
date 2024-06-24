@@ -35,9 +35,7 @@ body {
   background-image: url("./bg-1.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
-
-  
+  background-position: center; 
 }
 
 .top {
@@ -144,3 +142,18 @@ body {
 .img-scale {
   transform: scale(1.15);
 }
+
+
+/*  */
+
+
+
+
+
+
+.calendar-body {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+}
+

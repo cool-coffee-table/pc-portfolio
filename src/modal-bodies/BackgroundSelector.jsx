@@ -47,6 +47,7 @@ function Background({ img, setBg }) {
         src={img}
         alt="bg"
         key={img}
+        loading="lazy"
         className="w-full max-w-[181px] rounded-md"
       />
     </figure>

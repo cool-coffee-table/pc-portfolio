@@ -7,11 +7,14 @@ import ControlCenter from "../ToolbarComponents/ControlCenter";
 import ToolbarApps from "../ToolbarComponents/ToolbarApps";
 import { showLockScreenAtom } from "../atoms/LockScreenAtom";
 import { useRecoilState } from "recoil";
+import { toolbarModalsOpenAtom } from "../atoms/ControlCenterAtoms";
 
 export default function Toolbar() {
   const [showLockScreen, setShowLockScreen] = useRecoilState(showLockScreenAtom);
+  const [toolbarModalsOpen, setToolbarModalsOpen] = useRecoilState(toolbarModalsOpenAtom)
+
   return (
-    <div className="absolute backdrop-blur-3xl bottom-0 z-50 w-full h-[44px] bg-[#242424] 800 text-white bg-opacity-80 flex items-center justify-between">
+    <div className="absolute backdrop-blur-3xl bottom-0 z-50 w-full h-[44px] bg-[#242424] 800 text-white bg-opacity-80 flex items-center justify-between py-1 pr-1">
       <div className="flex h-full items-center">
         <span className="px-2.5 hover:bg-slate-600 h-full flex items-center cursor-pointer" onClick={() => setShowLockScreen(true)}>
           <FaFortAwesome />
@@ -21,8 +24,8 @@ export default function Toolbar() {
       <div className="flex  h-full">
         <Weather/>
         <ControlCenter/>
-        <div className="text-xs w-[88px] hover:bg-slate-600 flex flex-col justify-center items-center cursor-pointer relative">
-        {/* <div className="absolute left-0 right-0 bottom-[100%] -top-96 bg-black"></div> */}
+        <div className="text-xs w-[88px] hover:bg-slate-600 flex flex-col justify-center items-center cursor-pointer relative rounded-sm text-center" 
+        onClick={() => setToolbarModalsOpen({controlCenter: false, calendar: !toolbarModalsOpen.calendar})}>
           <Clock />
         </div>
       </div>

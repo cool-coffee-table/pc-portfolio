@@ -12,7 +12,7 @@ export default function Taskbar({ id, toggleMaximized, close }) {
         <figure className="py-1.5 mr-2 pointer-events-none">
           <img src="./user.png" alt="" className="h-5" />
         </figure>
-        <span className="text-xs font-bold">{id}</span>
+        <span className="text-xs semibold">{id}</span>
       </div>
       <div className="flex h-8 items-center justify-center">
         <span className="hover-highlight-dark flex items-center h-full px-2 cursor-pointer">
