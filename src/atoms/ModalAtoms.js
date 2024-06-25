@@ -2,7 +2,7 @@ import { atom } from 'recoil';
 
 export const showModalsAtom = atom({
     key: 'showModalsAtom',
-    default: {skills:false,weather:false,backgrounds:false, notes: false, fileExplorer: false, contact: false, about: true}
+    default: {skills:false,snake:false,backgrounds:false, notes: false, fileExplorer: false, contact: false, about: true}
 })
 
 

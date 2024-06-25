@@ -1,29 +1,28 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 import { useRecoilState } from "recoil";
 import { weatherAtom, weatherLocationAtom } from "../atoms/WeatherAtom";
-import { showModalsAtom } from "../atoms/ModalAtoms";
+import { toolbarModalsOpenAtom } from "../atoms/ToolbarAtoms";
 
 export default function Weather() {
-  const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
 
   const [weather, setWeather] = useRecoilState(weatherAtom)
   const [weatherLocation, setWeatherLocation] = useRecoilState(weatherLocationAtom)
-  const [showModals, setShowModals] = useRecoilState(showModalsAtom);
+  const [toolbarModalsOpen, setToolbarModalsOpen] = useRecoilState(toolbarModalsOpenAtom)
 
   const formatWeather = (str) => {
     let formattedStr = "";
-    let strArray = str.split(" "); // Corrected splitting by space
+    let strArray = str.split(" ");
     for (let word of strArray) {
-      formattedStr += word.charAt(0).toUpperCase() + word.slice(1) + " "; // Appending to formattedStr
+      formattedStr += word.charAt(0).toUpperCase() + word.slice(1) + " ";
     }
-    return formattedStr.trim(); // Trim to remove trailing space
+    return formattedStr.trim();
   };
 
   
 
   return (
-    <div className="px-3 rounded-sm flex items-center justify-center hover:bg-slate-600 cursor-pointer" onClick={() => setShowModals((prev) => ({...prev, weather: !prev.weather}))}>
+    <div className="px-3 rounded-sm flex items-center justify-center hover:bg-slate-600 cursor-pointer" 
+    onClick={() => setToolbarModalsOpen({calendar: false, weather: !toolbarModalsOpen.weather, controlCenter: false})}>
       {weather ? (
         <>
           <span>{Math.floor(((weather.main.temp - 273.15) * 9) / 5 + 32)}°F</span>

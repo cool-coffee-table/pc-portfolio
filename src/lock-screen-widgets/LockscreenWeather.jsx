@@ -20,7 +20,7 @@ export default function LockscreenWeather() {
   };
 
   return (
-    <div className="absolute bottom-60 right-12 bg-white bg-opacity-5 py-4 px-4">
+    <div className="absolute bottom-60 right-12 bg-white bg-opacity-5 py-4 px-4 backdrop-blur-xl">
       <p className="text-center text-sm">Current Weather:</p>
       <p className="text-center">Gainesville Florida</p>
       {weather ? (

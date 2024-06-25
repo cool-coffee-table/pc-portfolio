@@ -2,7 +2,7 @@ import { atom } from 'recoil';
 
 export const toolbarModalsOpenAtom = atom({
     key: 'toolbarModalsOpen',
-    default: {controlCenter: false, calendar: false}
+    default: {controlCenter: false, calendar: false, weather: false}
 })
 
 

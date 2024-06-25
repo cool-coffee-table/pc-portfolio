@@ -7,9 +7,11 @@ import ControlCenter from "../ToolbarComponents/ControlCenter";
 import ToolbarApps from "../ToolbarComponents/ToolbarApps";
 import { showLockScreenAtom } from "../atoms/LockScreenAtom";
 import { useRecoilState } from "recoil";
-import { toolbarModalsOpenAtom } from "../atoms/ControlCenterAtoms";
+import { toolbarModalsOpenAtom } from "../atoms/ToolbarAtoms";
 
 export default function Toolbar() {
+
+
   const [showLockScreen, setShowLockScreen] = useRecoilState(showLockScreenAtom);
   const [toolbarModalsOpen, setToolbarModalsOpen] = useRecoilState(toolbarModalsOpenAtom)
 
@@ -25,7 +27,7 @@ export default function Toolbar() {
         <Weather/>
         <ControlCenter/>
         <div className="text-xs w-[88px] hover:bg-slate-600 flex flex-col justify-center items-center cursor-pointer relative rounded-sm text-center" 
-        onClick={() => setToolbarModalsOpen({controlCenter: false, calendar: !toolbarModalsOpen.calendar})}>
+        onClick={() => setToolbarModalsOpen({controlCenter: false, calendar: !toolbarModalsOpen.calendar, weather: false})}>
           <Clock />
         </div>
       </div>

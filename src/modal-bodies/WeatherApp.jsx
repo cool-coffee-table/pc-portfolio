@@ -12,24 +12,19 @@ export default function WeatherApp() {
   };
 
   function convertUnixTo12HourFormat(unixTimestamp) {
-    // Create a Date object from the Unix timestamp
-    const date = new Date(unixTimestamp * 1000); // Convert seconds to milliseconds
+    const date = new Date(unixTimestamp * 1000); 
 
-    // Extract hours and minutes
-    let hours = date.getHours(); // Use getHours() for local time
+    let hours = date.getHours();
     const minutes = date.getMinutes();
 
-    // Determine AM or PM
+
     const ampm = hours >= 12 ? "PM" : "AM";
 
-    // Convert to 12-hour format
     hours = hours % 12;
-    hours = hours ? hours : 12; // The hour '0' should be '12'
+    hours = hours ? hours : 12; 
 
-    // Format minutes with leading zero
     const formattedMinutes = String(minutes).padStart(2, "0");
 
-    // Return formatted time as hh:mm AM/PM
     return `${hours}:${formattedMinutes} ${ampm}`;
   }
 

@@ -29,8 +29,8 @@ export default function Modal({ id, childId, body, close }) {
   };
 
   useEffect(() => {
-    console.log(zIndex)
-  },[zIndex])
+    bringToFront()
+  },[])
 
   return (
     <div

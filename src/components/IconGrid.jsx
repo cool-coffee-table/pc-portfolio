@@ -95,12 +95,12 @@ export default function IconGrid() {
     {
       img: (
         <img
-          src={"./Weather-icon.png"}
+          src={"./snake.png"}
           className="max-w-[45px] mx-auto scale-110"
         />
       ),
-      name: "Weather",
-      onClick: () => setShowModals((prev) => ({ ...prev, weather: true })),
+      name: "Snake",
+      onClick: () => setShowModals((prev) => ({ ...prev, snake: true })),
     },
     {
       img: (

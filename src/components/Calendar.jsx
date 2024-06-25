@@ -1,7 +1,7 @@
 // src/components/Calendar.jsx
 import React, { useState, useEffect } from 'react';
 import { GoTriangleUp, GoTriangleDown } from "react-icons/go";
-import { toolbarModalsOpenAtom } from '../atoms/ControlCenterAtoms';
+import { toolbarModalsOpenAtom } from '../atoms/ToolbarAtoms';
 import { useRecoilState } from 'recoil';
 
 

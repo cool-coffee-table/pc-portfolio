@@ -2,21 +2,21 @@ import React, { useEffect } from "react";
 import Toolbar from "./Toolbar";
 import IconGrid from "./IconGrid";
 import Modal from "./Modal";
-import WeatherApp from "../modal-bodies/WeatherApp";
 import { useRecoilState } from "recoil";
 import { weatherAtom, weatherLocationAtom } from "../atoms/WeatherAtom";
 import axios from "axios";
 import BackgroundSelector from "../modal-bodies/BackgroundSelector";
 import { showModalsAtom } from "../atoms/ModalAtoms";
 import Notepad from "../modal-bodies/Notepad";
-
 import FileExplorer from "./FileExplorer";
 import Contact from "../modal-bodies/Contact";
 import About from "../modal-bodies/About";
 import Skills from "../modal-bodies/Skills";
 import ControlCenterModal from "./ControlCenterModal";
-import { screenFiltersAtom } from "../atoms/ControlCenterAtoms";
+import { screenFiltersAtom } from "../atoms/ToolbarAtoms";
 import Calendar from "./Calendar";
+import SnakeGame from "../modal-bodies/SnakeGame/SnakeGameWindow";
+import WeatherModal from "./WeatherModal";
 
 export default function Home() {
   const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
@@ -40,11 +40,11 @@ export default function Home() {
   }, []);
 
   const closeModals = {
-    closeSkills: () => setShowModals((prev) => ({ ...prev, skills: false })),
+    closeSnake: () => setShowModals((prev) => ({ ...prev, snake: false })),
     closeBackgrounds: () =>
       setShowModals((prev) => ({ ...prev, backgrounds: false })),
     closeNotes: () => setShowModals((prev) => ({ ...prev, notes: false })),
-    closeWeather: () => setShowModals((prev) => ({ ...prev, weather: false })),
+    closeSkills: () => setShowModals((prev) => ({ ...prev, skills: false })),
     closeFileExplorer: () =>
       setShowModals((prev) => ({ ...prev, fileExplorer: false })),
     closeContact: () => setShowModals((prev) => ({ ...prev, contact: false })),
@@ -60,14 +60,6 @@ export default function Home() {
 
   return (
     <div className="max-h-screen h-screen  w-screen relative flex flex-col select-none overflow-hidden">
-      {showModals.weather && (
-        <Modal
-          id={"weatherApp"}
-          childId={"Weather"}
-          body={<WeatherApp />}
-          close={closeModals.closeWeather}
-        />
-      )}
       {showModals.backgrounds && (
         <Modal
           id={"backgroundSelector"}
@@ -102,10 +94,12 @@ export default function Home() {
         />
       )}
       {showModals.skills && <Modal id={"skillsModal"} childId={"Skills"} body={<Skills />} close={closeModals.closeSkills} />}
+      {showModals.snake && <Modal id={"snakeGame"} childId={"Snake"} body={<SnakeGame/>} close={closeModals.closeSnake}/>}
       <Calendar/>
       <IconGrid />
       <Toolbar />
       <ControlCenterModal />
+      <WeatherModal/>
 
     </div>
   );
