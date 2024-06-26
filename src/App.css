@@ -41,11 +41,9 @@ body {
   transition: filter 500ms ease;
 }
 
-.top {
-  z-index: 100;
+.img-scale {
+  transform: scale(1.15);
 }
-
-
 
 #weather {
 
@@ -55,40 +53,28 @@ body {
   background-position: center;
 }
 
-.hover-highlight-light,
-.hover-highlight-dark {
-  transition: all 200ms ease;
-}
-
-.hover-highlight-dark:hover {
-  background-color: rgb(71, 85, 105);
-}
-.hover-highlight-light:hover {
-  background-color: #cccccc;
-}
-
 .bs {
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
     rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
 ::-webkit-scrollbar {
-  width: 12px; /* Width of vertical scrollbar */
-  height: 12px; /* Height of horizontal scrollbar */
+  width: 12px; 
+  height: 12px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #777; /* Color of the scrollbar thumb */
-  border-radius: 6px; /* Round corners of the scrollbar thumb */
-  border: 3px solid transparent; /* Adds space around thumb */
-  background-clip: content-box; /* Keep thumb smaller than track */
+  background-color: #777; 
+  border-radius: 6px;
+  border: 3px solid transparent;
+  background-clip: content-box;
 }
 
 .transition-drag {
   transition: all 300ms ease;
 }
 
-/*  */
+/* notepad  */
 
 .ql-toolbar.ql-snow {
   filter: invert(1);
@@ -115,12 +101,9 @@ body {
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
-/*  */
+/* end notepad */
 
-.roboto {
-  font-family: roboto, "sans serif";
-}
-
+/* lock screen */
 .lock-shadow {
   font-weight: 600;
   text-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
@@ -139,17 +122,11 @@ body {
   background-position: center;
 }
 
-
-/*  */
-
-.img-scale {
-  transform: scale(1.15);
-}
+/* end lock screen */
 
 
-/*  */
 
-
+/* calendar */
 
 .calendar-body {
   display: grid;
@@ -157,7 +134,7 @@ body {
   gap: 1px;
 }
 
-/*  */
+/* snake game */
 
 .snake-font {
   font-family: "Notable", sans-serif;
@@ -175,3 +152,5 @@ body {
   z-index: 100000000;
   background-color: #242424;
 }
+
+/* end snake game */

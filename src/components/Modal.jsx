@@ -44,7 +44,7 @@ export default function Modal({ id, childId, body, close }) {
   return (
     <div
       id={id}
-      className="absolute bg-[#242424] text-white min-w-[400px] bs transition-drag"
+      className="absolute bg-black text-white min-w-[400px] bs transition-drag"
       style={{
         display: isModalMinimized[id] ? "none": "",
         zIndex: zIndex,
@@ -59,7 +59,7 @@ export default function Modal({ id, childId, body, close }) {
       <div className="relative h-full">
         <Taskbar id={childId} toggleMaximized={toggleMaximized} toggleMinimized={toggleMinimized} close={close} />
         <ModalBody body={body} isMaximized={isMaximized} />
-        <div className="left-0 right-0 bg-[#242424] h-4 bottom-0 absolute border-t border-[#3a3a3a]"></div>
+        <div className="left-0 right-0 bg-black h-4 bottom-0 absolute border-t border-lightBlack"></div>
       </div>
     </div>
   );

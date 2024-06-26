@@ -32,7 +32,7 @@ export default function LockScreen() {
       <div className="flex flex-col justify-between h-full pt-8 pb-12">
         <div className="relative h-full w-full overflow-hidden flex flex-col items-center px-2">
           <p className=" text-center text-4xl font-bold">Welcome Back Cole</p>
-          <p className="text-center mt-2 sm:text-lg text-[#dddddd]">
+          <p className="text-center mt-2 sm:text-lg text-dull]">
             Press any key or click below to unlock your computer.
           </p>
           <span

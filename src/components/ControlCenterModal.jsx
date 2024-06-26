@@ -88,7 +88,7 @@ export default function ControlCenterModal() {
 
   return (
     <div
-      className={`absolute bottom-14 right-2 sm:right-3 w-[380px] sm:w-[390px] bg-[#242424] rounded-md border border-[#424242] overflow-hidden transition-all ${
+      className={`absolute bottom-14 right-2 sm:right-3 w-[380px] sm:w-[390px] bg-black rounded-md border border-lightBlack overflow-hidden transition-all ${
         toolbarModalsOpen.controlCenter
           ? " z-50"
           : " opacity-0 translate-y-80 z-0"
@@ -133,7 +133,7 @@ export default function ControlCenterModal() {
           />
         </div>
       </div>
-      <div className="w-full bg-[#1c1c1c] h-12 flex items-center">
+      <div className="w-full bg-darkBlack h-12 flex items-center">
         <div className="px-5 flex items-center">
           <span className="text-lg mr-2.5">
             <PiBatteryChargingFill />
@@ -149,7 +149,7 @@ function ControlCenterButton({ button }) {
   return (
     <div className="mb-6">
       <span
-        className={`h-[50px] flex items-center px-10 bg-[#1c1c1c] rounded-sm transition-all ${
+        className={`h-[50px] flex items-center px-10 bg-darkBlack rounded-sm transition-all ${
           button.isActive ? "bg-blue-600" : ""
         }`}
         onClick={button.onClick}

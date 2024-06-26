@@ -47,8 +47,8 @@ export default function Socials() {
         ))}
       </ul>
       {showLink && (
-        <div className="absolute inset-0 bg-[#242424] bg-opacity-20 backdrop-blur-md flex items-center justify-center">
-          <div className="h-40 px-3 bg-[#1c1c1c] border border-[#323232] py-3 rounded-md">
+        <div className="absolute inset-0 bg-black bg-opacity-20 backdrop-blur-md flex items-center justify-center">
+          <div className="h-40 px-3 bg-darkBlack border border-lightBlack py-3 rounded-md">
             <p className="text-lg">This Link will open in a new page.</p>
             <p className="text-center mt-2">Do you wish to continue?</p>
             <div className="mt-4 flex justify-center">
@@ -77,7 +77,7 @@ export default function Socials() {
 function Social({ social, onClick }) {
   return (
     <li
-      className="flex justify-between items-center px-4 text-sm py-1.5 hover:bg-gray-700 transition-all cursor-pointer"
+      className="flex justify-between items-center px-4 text-sm py-1.5 hover:bg-lightBlack transition-all cursor-pointer"
       onClick={onClick}
     >
       <p className="flex items-center">

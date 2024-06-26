@@ -40,14 +40,14 @@ export default function Contact() {
   return (
     <div className="pt-3 px-3">
       <form action="" className="max-w-[700px] mx-auto" ref={formRef} >
-        <div className="flex justify-between items-center border-b border-[#434343] pb-3">
+        <div className="flex justify-between items-center border-b border-lightBlack pb-3">
           <div className="flex items-center">
           <button className="text-sm bg-blue-600 hover:bg-opacity-75 transition-all py-1.5 px-3 rounded-sm mr-3" onClick={(e) => handleSumbit(e)}>
             Send Message
           </button>
           <p className="text-sm">Recipient: Cole Morgan</p>
           </div>
-          <span className="text-lg text-[#dddddd] cursor-pointer hover:opacity-80 transition-all" onClick={clearFields}>
+          <span className="text-lg text-dull cursor-pointer hover:opacity-80 transition-all" onClick={clearFields}>
             <FaRegTrashAlt />
           </span>
         </div>
@@ -60,7 +60,7 @@ export default function Contact() {
             name="user_name"
             value={fields.name}
             onChange={(e) => setFields((prev) => ({...prev, name: e.target.value}))}
-            className="border-none outline-none px-3 py-1.5 w-full bg-[#1c1c1c] mt-2 text-sm"
+            className="border-none outline-none px-3 py-1.5 w-full bg-darkBlack mt-2 text-sm"
             placeholder="John Doe"
           />
         </div>
@@ -73,7 +73,7 @@ export default function Contact() {
             name="user_email"
             onChange={(e) => setFields((prev) => ({...prev, email: e.target.value}))}
             value={fields.email}
-            className="border-none outline-none px-3 py-1.5 w-full bg-[#1c1c1c] mt-2 text-sm"
+            className="border-none outline-none px-3 py-1.5 w-full bg-darkBlack mt-2 text-sm"
             placeholder="email@email.com"
           />
         </div>
@@ -86,7 +86,7 @@ export default function Contact() {
           onChange={(e) => setFields((prev) => ({...prev, message: e.target.value}))}
             type="text"
             name="user_name"
-            className="border-none outline-none px-3 py-1.5 w-full bg-[#1c1c1c] mt-2 text-sm h-[120px] resize-none rounded-sm"
+            className="border-none outline-none px-3 py-1.5 w-full bg-darkBlack mt-2 text-sm h-[120px] resize-none rounded-sm"
             placeholder="Hello World."
           />
         </div>

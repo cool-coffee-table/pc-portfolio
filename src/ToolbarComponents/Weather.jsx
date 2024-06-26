@@ -21,7 +21,7 @@ export default function Weather() {
   
 
   return (
-    <div className="px-3 rounded-sm flex items-center justify-center hover:bg-slate-600 cursor-pointer" 
+    <div className="px-3 rounded-sm flex items-center justify-center hover:bg-lightBlack cursor-pointer" 
     onClick={() => setToolbarModalsOpen({calendar: false, weather: !toolbarModalsOpen.weather, controlCenter: false})}>
       {weather ? (
         <>

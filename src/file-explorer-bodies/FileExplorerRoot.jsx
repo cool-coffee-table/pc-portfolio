@@ -32,7 +32,7 @@ export default function FileExplorerRoot() {
 function Path({ path}) {
   return (
     <div
-      className="h-20 flex flex-col items-center justify-center cursor-pointer border border-transparent hover:bg-slate-600 hover:border-sky-200 min-w-[79px] transition-all"
+      className="h-20 flex flex-col items-center justify-center cursor-pointer border border-transparent hover:lightBlack hover:border-sky-200 min-w-[79px] transition-all"
       key={path.name}
       onClick={path.onClick}
     >

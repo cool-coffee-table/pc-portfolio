@@ -51,7 +51,7 @@ export default function FileExplorer() {
   return (
     <div
       id={"file-explorer"}
-      className="absolute bg-[#242424] text-white min-w-[400px] bs transition-drag"
+      className="absolute bg-black text-white min-w-[400px] bs transition-drag"
       style={{
         top: isMaximized ? "0" : "50%",
         zIndex: isMaximized ? "50" : "20",
@@ -65,7 +65,7 @@ export default function FileExplorer() {
       <Taskbar id={"Explore"} toggleMaximized={toggleMaximized} close={handleFileExplorerClose}/>
       <FileExplorerTaskbar path={fileExplorerPath}/>
       <FileExplorerBody body={body} isMaximized={isMaximized}/>
-      <div className="left-0 right-0 bg-[#242424] h-4 -bottom-[1px] absolute border-t border-[#3a3a3a]"></div>
+      <div className="left-0 right-0 bg-black h-4 -bottom-[1px] absolute border-t border-lightBlack"></div>
       </div>
       
     </div>

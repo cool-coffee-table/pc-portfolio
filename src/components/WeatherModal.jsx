@@ -40,7 +40,7 @@ export default function WeatherModal() {
 
   return (
     <div
-      className={`absolute bottom-14 right-3 w-[380px] h-32 bg-[#242424] px-5 py-3 rounded-md transition-all border border-[#424242]
+      className={`absolute bottom-14 right-3 w-[380px] h-32 bg-black px-5 py-3 rounded-md transition-all border border-lightBlack
                     ${
                       toolbarModalsOpen.weather
                         ? ""

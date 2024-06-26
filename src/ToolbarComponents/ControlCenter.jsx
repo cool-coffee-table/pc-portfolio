@@ -10,7 +10,7 @@ export default function ControlCenter() {
   const [toolbarModalsOpen, setToolbarModalsOpen] = useRecoilState(toolbarModalsOpenAtom)
   
   return (
-    <div className="relative rounded-sm hover:bg-slate-600">
+    <div className="relative rounded-sm hover:bg-lightBlack">
       <div
         className="px-1.5  flex items-center h-full cursor-pointer"
         onClick={() => setToolbarModalsOpen({controlCenter: !toolbarModalsOpen.controlCenter, calendar: false, weather: false})}

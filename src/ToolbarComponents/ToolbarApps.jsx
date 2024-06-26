@@ -57,7 +57,7 @@ function ToolbarApp({ app, handleAppClick, isModalMinimized, isModalOpen }) {
         ${
           isModalOpen[app.name] && !isModalMinimized[app.name]
             ? "bg-slate-600"
-            : "hover:bg-[#404040]"
+            : "hover:bg-lightBlack"
         }`}
       onClick={() => handleAppClick(app.name)}
     >

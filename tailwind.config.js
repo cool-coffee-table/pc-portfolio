@@ -7,7 +7,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        white: "#f8f8f8"
+        white: "#f8f8f8",
+        lightBlack: "#424242",
+        darkBlack: "#1c1c1c",
+        black: "#242424",
+        dull: "#dddddd",
       }
     },
   },

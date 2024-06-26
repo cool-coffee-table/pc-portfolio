@@ -16,7 +16,7 @@ export default function App() {
       <ToastContainer />
       <LockScreen />
       <Suspense
-        fallback={<div className="h-screen w-screen bg-[#242424]"></div>}
+        fallback={<div className="h-screen w-screen bg-black"></div>}
       >
         <Home />
       </Suspense>{" "}

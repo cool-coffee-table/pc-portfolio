@@ -75,7 +75,7 @@ export default function Skills() {
       <h5 className='semibold mb-2'>Frontend:</h5>
       <ul className='flex flex-wrap mb-2'>
         {frontend.map((skill) => (
-          <div key={skill.name} className="flex items-center mr-2 px-4 py-1 border rounded-sm border-[#555555] mb-2 transition-all hover:bg-[#1c1c1c] group">
+          <div key={skill.name} className="flex items-center mr-2 px-4 py-1 border rounded-sm border-lightBlack mb-2 transition-all hover:bg-darkBlack group">
             <span className='mr-2 group-hover:text-red-400 transition-all'>{skill.element}</span>
             <p className='text-sm'>{skill.name}</p>
           </div>
@@ -84,7 +84,7 @@ export default function Skills() {
       <h5 className='semibold mb-2'>Backend/DB:</h5>
       <ul className='flex flex-wrap mb-2'>
         {backend.map((skill) => (
-          <div key={skill.name} className="flex items-center mr-2 px-4 py-1 border rounded-sm border-[#555555] mb-2 transition-all hover:bg-[#1c1c1c] group">
+          <div key={skill.name} className="flex items-center mr-2 px-4 py-1 border rounded-sm border-lightBlack mb-2 transition-all hover:bg-darkBlack group">
             <span className='mr-2 group-hover:text-red-400 transition-all'>{skill.element}</span>
             <p className='text-sm'>{skill.name}</p>
           </div>
@@ -93,7 +93,7 @@ export default function Skills() {
       <h5 className='semibold mb-2'>Other:</h5>
       <ul className='flex flex-wrap mb-2'>
         {other.map((skill) => (
-          <div key={skill.name} className="flex items-center mr-2 px-4 py-1 border rounded-sm border-[#555555] mb-2 transition-all hover:bg-[#1c1c1c] group">
+          <div key={skill.name} className="flex items-center mr-2 px-4 py-1 border rounded-sm border-lightBlack mb-2 transition-all hover:bg-darkBlack group">
             <span className='mr-2 group-hover:text-red-400 transition-all'>{skill.element}</span>
             <p className='text-sm'>{skill.name}</p>
           </div>
