@@ -6,14 +6,14 @@ export default function BackgroundSelector() {
   const [backgrounds, setBackgrounds] = useRecoilState(backgroundAtom);
 
   const images = [
-    "./bg-1.jpg",
-    "./bg-2.jpg",
-    "./bg-3.jpg",
-    "./bg-4.jpg",
-    "./bg-5.avif",
-    "./bg-6.avif",
-    "./bg-7.jpg",
-    "./bg-8.jpg",
+    "/bg-1.jpg",
+    "/bg-2.jpg",
+    "/bg-3.jpg",
+    "/bg-4.jpg",
+    "/bg-5.avif",
+    "/bg-6.avif",
+    "/bg-7.jpg",
+    "/bg-8.jpg",
   ];
 
   const setBg = (img) => {

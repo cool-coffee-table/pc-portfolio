@@ -13,17 +13,17 @@
 
 @font-face {
   font-family: "os";
-  src: url("./font.ttf") format("truetype");
+  src: url("/font.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "os-bold";
-  src: url("./font-bold.ttf") format("truetype");
+  src: url("/font-bold.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "os-semibold";
-  src: url("./font-semibold.ttf") format("truetype");
+  src: url("/font-semibold.ttf") format("truetype");
 }
 .bold {
   font-family: "os-bold", sans-serif;
@@ -34,7 +34,7 @@
 body {
   font-family: "os", sans-serif;
   background-color: #242424;
-  background-image: url("./bg-1.jpg");
+  background-image: url("/bg-1.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center; 
@@ -47,7 +47,7 @@ body {
 
 #weather {
 
-  background-image: url("./weather-bg.jpg");
+  background-image: url("/weather-bg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -116,7 +116,7 @@ body {
 #lock-screen {
   position: absolute;
   z-index: 40000;
-  background-image: url("./boot-image2.jpg");
+  background-image: url("/boot-image2.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
