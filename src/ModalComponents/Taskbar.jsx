@@ -5,7 +5,7 @@ import {
   VscChromeMaximize,
 } from "react-icons/vsc";
 
-export default function Taskbar({ id, toggleMaximized, close }) {
+export default function Taskbar({ id, toggleMaximized, close, toggleMinimized}) {
   return (
     <div className="pl-2 flex items-center select-none border-b  border-[#505050]">
       <div className="flex items-center w-full" id={`${id}`}>
@@ -15,7 +15,7 @@ export default function Taskbar({ id, toggleMaximized, close }) {
         <span className="text-xs semibold">{id}</span>
       </div>
       <div className="flex h-8 items-center justify-center">
-        <span className="hover-highlight-dark flex items-center h-full px-2 cursor-pointer">
+        <span className="hover-highlight-dark flex items-center h-full px-2 cursor-pointer" onClick={toggleMinimized}>
           <VscChromeMinimize />
         </span>
         <span className="hover-highlight-dark flex items-center h-full px-2 cursor-pointer" onClick={toggleMaximized}>

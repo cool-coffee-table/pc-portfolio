@@ -78,7 +78,7 @@ export default function GithubContributions() {
   };
 
   return (
-    <div className="backdrop-blur-sm bg-white bg-opacity-5 absolute right-12 bottom-8 p-3 rounded-sm">
+    <div className="backdrop-blur-sm bg-white bg-opacity-5 py-3 px-4 rounded-sm max-w-[222px]">
         <h3 className="text-sm">Github Contributions (30 days)</h3>
       {loading ? (
         <div className="h-[152px] w-[189px] flex items-center justify-center">

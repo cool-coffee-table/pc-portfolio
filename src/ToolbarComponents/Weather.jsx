@@ -26,7 +26,7 @@ export default function Weather() {
       {weather ? (
         <>
           <span>{Math.floor(((weather.main.temp - 273.15) * 9) / 5 + 32)}°F</span>
-          <span className="pl-1.5">{formatWeather(weather.weather[0].description)}</span>   
+          <span className="pl-1.5 text-sm sm:text-base">{formatWeather(weather.weather[0].description)}</span>   
         </>
       ):  <>
       <span>77°F</span>

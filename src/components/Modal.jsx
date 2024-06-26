@@ -3,10 +3,12 @@ import Taskbar from "../ModalComponents/Taskbar";
 import useDragger from "../hooks/useDragger";
 import ModalBody from "../ModalComponents/ModalBody";
 import { useRecoilState } from "recoil";
-import { modalZIndexAtom, showModalsAtom } from "../atoms/ModalAtoms";
+import { isModalMinimizedAtom, modalZIndexAtom, showModalsAtom } from "../atoms/ModalAtoms";
 
 export default function Modal({ id, childId, body, close }) {
   const [isMaximized, setIsMaximized] = useState(false);
+  const [isModalMinimized, setIsModalMinimized] =
+    useRecoilState(isModalMinimizedAtom);
   const [zIndexList, setZIndexList] = useRecoilState(modalZIndexAtom);
   useDragger(id, childId, isMaximized);
 
@@ -28,15 +30,23 @@ export default function Modal({ id, childId, body, close }) {
     setIsMaximized((prevMaximized) => !prevMaximized);
   };
 
+  const toggleMinimized = () => {
+    setIsModalMinimized((prev) => ({...prev, [id]: !prev[id]}))
+  }
+
+
   useEffect(() => {
     bringToFront()
   },[])
+
+ 
 
   return (
     <div
       id={id}
       className="absolute bg-[#242424] text-white min-w-[400px] bs transition-drag"
       style={{
+        display: isModalMinimized[id] ? "none": "",
         zIndex: zIndex,
         top: isMaximized ? "0" : "50%",
         left: isMaximized ? "0" : "50%",
@@ -47,7 +57,7 @@ export default function Modal({ id, childId, body, close }) {
       onMouseDown={bringToFront}
     >
       <div className="relative h-full">
-        <Taskbar id={childId} toggleMaximized={toggleMaximized} close={close} />
+        <Taskbar id={childId} toggleMaximized={toggleMaximized} toggleMinimized={toggleMinimized} close={close} />
         <ModalBody body={body} isMaximized={isMaximized} />
         <div className="left-0 right-0 bg-[#242424] h-4 bottom-0 absolute border-t border-[#3a3a3a]"></div>
       </div>

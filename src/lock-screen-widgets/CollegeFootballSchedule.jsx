@@ -33,7 +33,7 @@ export default function CollegeFootballSchedule() {
     console.log(games);
   }, [games]);
   return (
-    <div className="absolute bottom-8 right-[272px] backdrop-blur-sm bg-white bg-opacity-5 p-3  rounded-sm min-h-[196px]">
+    <div className="realtive right-[272px] backdrop-blur-sm bg-white bg-opacity-5 p-3  rounded-sm min-h-[196px] mr-2 md:mt-2 md:mr-0 lg:mr-2 lg:mt-0">
       <p className="text-sm text-center mb-2">Recent Home Games:</p>
       <ul className="px-4">
         {" "}

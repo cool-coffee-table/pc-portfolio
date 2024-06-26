@@ -88,10 +88,10 @@ export default function ControlCenterModal() {
 
   return (
     <div
-      className={`absolute bottom-14 right-3 w-[390px] bg-[#242424] rounded-md border border-[#424242] overflow-hidden transition-all ${
+      className={`absolute bottom-14 right-2 sm:right-3 w-[380px] sm:w-[390px] bg-[#242424] rounded-md border border-[#424242] overflow-hidden transition-all ${
         toolbarModalsOpen.controlCenter
           ? " z-50"
-          : " opacity-0 translate-y-20 z-0"
+          : " opacity-0 translate-y-80 z-0"
       }`}
     >
       <div className="w-full flex justify-between flex-wrap  p-5 ">

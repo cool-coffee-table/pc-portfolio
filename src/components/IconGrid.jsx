@@ -1,7 +1,7 @@
 import React from "react";
 import { FcSettings } from "react-icons/fc";
 import { useRecoilState } from "recoil";
-import { showModalsAtom } from "../atoms/ModalAtoms";
+import { isModalMinimizedAtom, showModalsAtom } from "../atoms/ModalAtoms";
 import {
   fileExplorerPathAtom,
   showFileExplorerFolderAtom,
@@ -11,9 +11,41 @@ export default function IconGrid() {
   const [showModals, setShowModals] = useRecoilState(showModalsAtom);
   const [fileExplorerPath, setFileExplorerPath] =
     useRecoilState(fileExplorerPathAtom);
+  const [isModalMinimized, setIsModalMinimized] =
+    useRecoilState(isModalMinimizedAtom);
   const [showFileExplorerFolder, setShowFileExplorerFolder] = useRecoilState(
     showFileExplorerFolderAtom
   );
+
+  const handleAppClick = (id) => {
+    if (id === "socials" || id === "root" || id === "projects") {
+      handleFolderClick(id);
+      return;
+    }
+    console.log(isModalMinimized[id]);
+    if (isModalMinimized[id]) {
+      setIsModalMinimized((prev) => ({ ...prev, [id]: false }));
+    } else if (!showModals[id]) {
+      setShowModals((prev) => ({ ...prev, [id]: true }));
+    }
+  };
+
+  const handleFolderClick = (id) => {
+    if (showModals.fileExplorer && isModalMinimized.fileExplorer) {
+      setIsModalMinimized((prev) => ({ ...prev, fileExplorer: false }));
+      return;
+    }
+
+    setShowModals((prev) => ({ ...prev, fileExplorer: true }));
+
+    if (id === "socials") {
+      openSocials();
+    } else if (id === "projects") {
+      openProjects();
+    } else if (id === "root") {
+      openFileExplorer();
+    }
+  };
 
   const openSocials = () => {
     setShowFileExplorerFolder({
@@ -31,18 +63,27 @@ export default function IconGrid() {
     });
     setShowModals((prev) => ({ ...prev, fileExplorer: true }));
   };
+
+  const openFileExplorer = () => {
+    setShowFileExplorerFolder({
+      showRoot: true,
+      showSocials: false,
+      showProjects: false,
+    });
+    setShowModals((prev) => ({ ...prev, fileExplorer: true }));
+  };
   const items = [
     {
       img: <img src={"./blue.png"} alt="" className="max-w-[45px] mx-auto" />,
       name: "Projects",
-      onClick: openProjects,
+      id: "projects",
     },
     {
       img: (
         <img src={"./Email-icon.png"} alt="" className="max-w-[45px] mx-auto" />
       ),
       name: "Contact",
-      onClick: () => setShowModals((prev) => ({ ...prev, contact: true })),
+      id: "contact",
     },
     {
       img: (
@@ -53,7 +94,7 @@ export default function IconGrid() {
         />
       ),
       name: "About",
-      onClick: () => setShowModals((prev) => ({ ...prev, about: true })),
+      id: "about",
     },
   ];
 
@@ -63,7 +104,7 @@ export default function IconGrid() {
         <img src={"./green.png"} className="max-w-[45px] mx-auto scale-110" />
       ),
       name: "Socials",
-      onClick: openSocials,
+      id: "socials",
     },
     {
       img: (
@@ -72,15 +113,15 @@ export default function IconGrid() {
           className="max-w-[45px] mx-auto scale-110"
         />
       ),
-      name: "File Explorer",
-      onClick: () => setShowModals((prev) => ({ ...prev, fileExplorer: true })),
+      name: "Files",
+      id: "root",
     },
     {
       img: (
         <img src={"./notepad.png"} className="max-w-[45px] mx-auto scale-110" />
       ),
       name: "Notepad",
-      onClick: () => setShowModals((prev) => ({ ...prev, notes: true })),
+      id: "notes",
     },
   ];
 
@@ -90,24 +131,21 @@ export default function IconGrid() {
         <img src={"./photos.png"} className="max-w-[45px] mx-auto scale-110" />
       ),
       name: "Backgrounds",
-      onClick: () => setShowModals((prev) => ({ ...prev, backgrounds: true })),
+      id: "backgrounds",
     },
     {
       img: (
-        <img
-          src={"./snake.png"}
-          className="max-w-[45px] mx-auto scale-110"
-        />
+        <img src={"./snake.png"} className="max-w-[45px] mx-auto scale-110" />
       ),
       name: "Snake",
-      onClick: () => setShowModals((prev) => ({ ...prev, snake: true })),
+      id: "snake",
     },
     {
       img: (
         <img src={"./gear.png"} className="max-w-[45px] mx-auto scale-110" />
       ),
       name: "My Skills",
-      onClick: () => setShowModals((prev) => ({ ...prev, skills: true })),
+      id: "skills",
     },
   ];
 
@@ -119,7 +157,7 @@ export default function IconGrid() {
             img={icon.img}
             name={icon.name}
             key={icon.name}
-            onClick={icon.onClick}
+            onClick={() => handleAppClick(icon.id)}
           />
         ))}
       </div>
@@ -129,7 +167,7 @@ export default function IconGrid() {
             img={icon.img}
             name={icon.name}
             key={icon.name}
-            onClick={icon.onClick}
+            onClick={() => handleAppClick(icon.id)}
           />
         ))}
       </div>
@@ -139,7 +177,7 @@ export default function IconGrid() {
             img={icon.img}
             name={icon.name}
             key={icon.name}
-            onClick={icon.onClick}
+            onClick={() => handleAppClick(icon.id)}
           />
         ))}
       </div>

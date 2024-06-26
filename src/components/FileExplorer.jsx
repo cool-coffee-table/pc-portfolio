@@ -17,10 +17,9 @@ export default function FileExplorer() {
   const [showFileExplorerFolder, setShowFileExplorerFolder] = useRecoilState(showFileExplorerFolderAtom)
   const [showModals, setShowModals] = useRecoilState(showModalsAtom)
   useDragger("file-explorer", "Explore", isMaximized);
-  const [body , setBody] = useState(<FileExplorerRoot/>)
+  const [body , setBody] = useState(<></>)
 
   useEffect(() => {
-    if(!showFileExplorerFolder) return
     if(showFileExplorerFolder.showRoot) {
       setFileExplorerPath("C:Users/ColeMorgan/Desktop")
       setBody(<FileExplorerRoot/>)
@@ -33,11 +32,16 @@ export default function FileExplorer() {
       setFileExplorerPath("C:Users/ColeMorgan/Desktop/socials")
       setBody(<Projects/>)
     }
+    else {
+      console.log("yes")
+      setBody(<></>)
+    }
   },[showFileExplorerFolder])
  
   const handleFileExplorerClose = () => {
+    setShowFileExplorerFolder({showRoot:false, showSocials: false, showProjects:false})
     setShowModals((prev) => ({...prev, fileExplorer:false}))
-    setShowFileExplorerFolder({showRoot:true, showSocials: false, showProjects:false})
+    
   }
 
   const toggleMaximized = () => {
@@ -61,7 +65,7 @@ export default function FileExplorer() {
       <Taskbar id={"Explore"} toggleMaximized={toggleMaximized} close={handleFileExplorerClose}/>
       <FileExplorerTaskbar path={fileExplorerPath}/>
       <FileExplorerBody body={body} isMaximized={isMaximized}/>
-      <div className="left-0 right-0 bg-[#242424] h-4 bottom-0 absolute border-t border-[#3a3a3a]"></div>
+      <div className="left-0 right-0 bg-[#242424] h-4 -bottom-[1px] absolute border-t border-[#3a3a3a]"></div>
       </div>
       
     </div>

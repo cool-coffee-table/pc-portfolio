@@ -5,10 +5,11 @@ import { showLockScreenAtom } from "../atoms/LockScreenAtom";
 import GithubContributions from "../lock-screen-widgets/GithubContributions";
 import CollegeFootballSchedule from "../lock-screen-widgets/CollegeFootballSchedule";
 import LockscreenWeather from "../lock-screen-widgets/LockscreenWeather";
+import LockscreenClock from "../lock-screen-widgets/LockscreenClock";
 
-const LockScreen = () => {
-  const [showLockScreen, setShowLockScreen] = useRecoilState(showLockScreenAtom);
- 
+export default function LockScreen() {
+  const [showLockScreen, setShowLockScreen] =
+    useRecoilState(showLockScreenAtom);
 
   useEffect(() => {
     const handleKeyPress = () => {
@@ -28,61 +29,35 @@ const LockScreen = () => {
         showLockScreen ? "" : "-translate-y-full opacity-0"
       }`}
     >
-      <div className="relative h-full w-full overflow-hidden flex flex-col items-center">
-        <p className="mt-8 text-center text-4xl font-bold">Welcome Back Cole</p>
-        <p className="text-center mt-2 text-lg text-[#dddddd]">
-          Press any key or click below to unlock your computer.
-        </p>
-        <span
-          className="mt-3 px-20 text-sm py-1.5 bg-slate-700 cursor-pointer rounded-sm semibold hover:bg-opacity-80 transition-all"
-          onClick={() => setShowLockScreen(false)}
-        >
-          Sign In
-        </span>
-        <LockscreenWeather/>
-        <GithubContributions/>
-        <CollegeFootballSchedule/>
-        <Clock />
+      <div className="flex flex-col justify-between h-full pt-8 pb-12">
+        <div className="relative h-full w-full overflow-hidden flex flex-col items-center px-2">
+          <p className=" text-center text-4xl font-bold">Welcome Back Cole</p>
+          <p className="text-center mt-2 sm:text-lg text-[#dddddd]">
+            Press any key or click below to unlock your computer.
+          </p>
+          <span
+            className="mt-3 px-20 text-sm py-1.5 bg-slate-700 cursor-pointer rounded-sm semibold hover:bg-opacity-80 transition-all"
+            onClick={() => setShowLockScreen(false)}
+          >
+            Sign In
+          </span>
+          <span className="text-center mt-12 sm:hidden"><LockscreenClock /></span>
+        </div>
+        <div className=" w-full md:flex md:justify-between md:items-end px-6 md:px-8 xl:px-12">
+          <div className="mb-2 sm:hidden"><GithubContributions /></div>
+          <div className="hidden md:block"><LockscreenClock /></div>
+          <div className="flex flex-col md:items-end">
+            <div className="flex items-center">
+            <LockscreenWeather />
+            <div className="ml-8 hidden sm:block md:hidden"><LockscreenClock /></div>
+            </div>
+            <div className="flex md:flex-col-reverse md:items-end lg:flex-row">
+              <CollegeFootballSchedule />
+              <span className="hidden sm:block"><GithubContributions /></span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
-};
-
-const Clock = () => {
-  const [date, setDate] = useState(new Date());
-
-  useEffect(() => {
-    const timerID = setInterval(() => tick(), 1000);
-
-    return () => clearInterval(timerID);
-  }, []);
-
-  const tick = () => {
-    setDate(new Date());
-  };
-
-  const formatTime = date => {
-    return date.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
-  };
-
-  const formatDayOfWeek = date => {
-    return date.toLocaleDateString([], { weekday: "long" });
-  };
-
-  const formatMonth = date => {
-    return date.toLocaleDateString([], { month: "long" });
-  };
-
-  const formatDay = date => {
-    return date.getDate();
-  };
-
-  return (
-    <div className="absolute bottom-20 left-12">
-      <p className="text-[112px] max-h-36 font-bold lock-shadow">{formatTime(date)}</p>
-      <p className="text-5xl font-bold lock-shadow pl-2">{`${formatDayOfWeek(date)}, ${formatMonth(date)} ${formatDay(date)}`}</p>
-    </div>
-  );
-};
-
-export default LockScreen;
+}

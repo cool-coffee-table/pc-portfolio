@@ -62,7 +62,7 @@ export default function Home() {
     <div className="max-h-screen h-screen  w-screen relative flex flex-col select-none overflow-hidden">
       {showModals.backgrounds && (
         <Modal
-          id={"backgroundSelector"}
+          id={"backgrounds"}
           childId={"Backgrounds"}
           body={<BackgroundSelector />}
           close={closeModals.closeBackgrounds}
@@ -70,7 +70,7 @@ export default function Home() {
       )}
       {showModals.notes && (
         <Modal
-          id={"notepadApp"}
+          id={"notes"}
           childId={"Notepad"}
           body={<Notepad />}
           close={closeModals.closeNotes}
@@ -79,7 +79,7 @@ export default function Home() {
       {showModals.fileExplorer && <FileExplorer />}
       {showModals.contact && (
         <Modal
-          id={"contactModal"}
+          id={"contact"}
           childId={"Contact"}
           body={<Contact />}
           close={closeModals.closeContact}
@@ -87,14 +87,14 @@ export default function Home() {
       )}
       {showModals.about && (
         <Modal
-          id={"aboutModal"}
+          id={"about"}
           childId={"About"}
           body={<About />}
           close={closeModals.closeAbout}
         />
       )}
-      {showModals.skills && <Modal id={"skillsModal"} childId={"Skills"} body={<Skills />} close={closeModals.closeSkills} />}
-      {showModals.snake && <Modal id={"snakeGame"} childId={"Snake"} body={<SnakeGame/>} close={closeModals.closeSnake}/>}
+      {showModals.skills && <Modal id={"skills"} childId={"Skills"} body={<Skills />} close={closeModals.closeSkills} />}
+      {showModals.snake && <Modal id={"snake"} childId={"Snake"} body={<SnakeGame/>} close={closeModals.closeSnake}/>}
       <Calendar/>
       <IconGrid />
       <Toolbar />

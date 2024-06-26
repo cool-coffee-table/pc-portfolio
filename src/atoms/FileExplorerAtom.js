@@ -8,5 +8,5 @@ export const fileExplorerPathAtom = atom({
 
 export const showFileExplorerFolderAtom = atom({
     key: 'showFileExplorerFolderAtom',
-    default: {showRoot: true, showProjects: false, showSocials: false}
+    default: {showRoot: false, showProjects: false, showSocials: false}
 })

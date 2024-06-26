@@ -1,29 +1,67 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useRecoilState } from "recoil";
+import { isModalMinimizedAtom, showModalsAtom } from "../atoms/ModalAtoms";
 
 export default function ToolbarApps() {
+  const [isModalMinimized, setIsModalMinimized] =
+    useRecoilState(isModalMinimizedAtom);
+  const [showModals, setShowModals] = useRecoilState(showModalsAtom);
+
+  const handleAppClick = (prop) => {
+    if (showModals[prop] && !isModalMinimized[prop]) {
+      setIsModalMinimized((prev) => ({ ...prev, [prop]: true }));
+    } else if (showModals[prop] && isModalMinimized[prop]) {
+      setIsModalMinimized((prev) => ({ ...prev, [prop]: false }));
+    } else {
+      setShowModals((prev) => ({ ...prev, [prop]: true }));
+    }
+  };
+
+  const apps = [
+    { src: "./Email-icon.png", name: "contact" },
+    { src: "./file-explorer.png", name: "fileExplorer" },
+    { src: "./notepad.png", name: "notes" },
+    { src: "./user-folder.png", name: "about" },
+    { src: "./photos.png", name: "backgrounds" },
+    { src: "./gear.png", name: "skills" },
+  ];
+
+  useEffect(() => {
+    console.log(showModals["contact"]);
+  }, [showModals]);
+
   return (
-    <>
-      <span className="px-3 cursor-pointer hover:bg-slate-600 h-full flex items-center border-l border-gray-600">
-        <img src="./Email-icon.png" alt="" className="max-w-6" />
-      </span>
-      <span className="px-3 cursor-pointer hover:bg-slate-600 h-full flex items-center border-gray-600">
-        <img src="./file-explorer.png" alt="" className="max-w-6" />
-      </span>
-      <span className="px-3 cursor-pointer hover:bg-slate-600 h-full flex items-center border-gray-600">
-        <img src="./Weather-icon.png" alt="" className="max-w-6" />
-      </span>
-      <span className="px-3 cursor-pointer hover:bg-slate-600 h-full flex items-center border-gray-600">
-        <img src="./notepad.png" alt="" className="max-w-6" />
-      </span>
-      <span className="px-3 cursor-pointer hover:bg-slate-600 h-full flex items-center border-gray-600">
-        <img src="./user-folder.png" alt="" className="max-w-6" />
-      </span>
-      <span className="px-3 cursor-pointer hover:bg-slate-600 h-full flex items-center border-gray-600">
-        <img src="./photos.png" alt="" className="max-w-6" />
-      </span>
-      <span className="px-3 cursor-pointer hover:bg-slate-600 h-full flex items-center border-gray-600">
-        <img src="./blue.png" alt="" className="max-w-6" />
-      </span>
-    </>
+    <div className="h-full hidden md:flex">
+      {apps.map((app) => (
+        <ToolbarApp
+          app={app}
+          key={app.name}
+          handleAppClick={handleAppClick}
+          isModalMinimized={isModalMinimized}
+          isModalOpen={showModals}
+        />
+      ))}
+    </div>
+  );
+}
+
+function ToolbarApp({ app, handleAppClick, isModalMinimized, isModalOpen }) {
+  return (
+    <span
+      className={`px-2.5 cursor-pointer hover:brightness-110 h-full flex items-center border-[3px] border-transparent transition-all
+        ${
+          isModalMinimized[app.name] || isModalOpen[app.name]
+            ? "border-b-sky-400"
+            : ""
+        }
+        ${
+          isModalOpen[app.name] && !isModalMinimized[app.name]
+            ? "bg-slate-600"
+            : "hover:bg-[#404040]"
+        }`}
+      onClick={() => handleAppClick(app.name)}
+    >
+      <img src={app.src} alt="" className="max-w-6" />
+    </span>
   );
 }

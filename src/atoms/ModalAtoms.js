@@ -5,6 +5,11 @@ export const showModalsAtom = atom({
     default: {skills:false,snake:false,backgrounds:false, notes: false, fileExplorer: false, contact: false, about: true}
 })
 
+export const isModalMinimizedAtom = atom({
+    key: 'isModalMinimizedAtom',
+    default: {skills:false,snake:false,backgrounds:false, notes: false, fileExplorer: false, contact: false, about: false}
+})
+
 
 export const modalZIndexAtom = atom({
     key: 'modalZIndexAtom',
