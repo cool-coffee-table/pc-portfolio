@@ -149,8 +149,8 @@ function ControlCenterButton({ button }) {
   return (
     <div className="mb-6">
       <span
-        className={`h-[50px] flex items-center px-10 bg-darkBlack rounded-sm transition-all ${
-          button.isActive ? "bg-blue-600" : ""
+        className={`h-[50px] flex items-center px-10 rounded-sm transition-all ${
+          button.isActive ? "bg-blue-600" : "bg-darkBlack"
         }`}
         onClick={button.onClick}
       >

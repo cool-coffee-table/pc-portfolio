@@ -23,12 +23,11 @@ export default function GithubContributions() {
             }
           );
           const events = response.data;
-          if (events.length === 0) break; // No more events to fetch
+          if (events.length === 0) break; 
           allEvents = [...allEvents, ...events];
           page++;
         }
 
-        // Process all events to aggregate commits
         const contributionData = aggregateCommitsByDay(allEvents);
         setContributions(contributionData);
         setLoading(false)
@@ -42,10 +41,8 @@ export default function GithubContributions() {
   }, [username, token]);
 
   const aggregateCommitsByDay = (events) => {
-    // Initialize an object to hold counts for each day
     const dateCounts = {};
 
-    // Aggregate commits by day using UTC dates
     events.forEach((event) => {
       const eventDateUTC = new Date(event.created_at);
       const dateString = eventDateUTC.toISOString().split("T")[0]; 

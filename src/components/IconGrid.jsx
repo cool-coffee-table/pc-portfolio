@@ -22,7 +22,6 @@ export default function IconGrid() {
       handleFolderClick(id);
       return;
     }
-    console.log(isModalMinimized[id]);
     if (isModalMinimized[id]) {
       setIsModalMinimized((prev) => ({ ...prev, [id]: false }));
     } else if (!showModals[id]) {

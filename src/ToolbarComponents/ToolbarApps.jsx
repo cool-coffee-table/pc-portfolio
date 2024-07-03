@@ -1,13 +1,18 @@
 import React, { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { isModalMinimizedAtom, showModalsAtom } from "../atoms/ModalAtoms";
+import { showFileExplorerFolderAtom } from "../atoms/FileExplorerAtom";
 
 export default function ToolbarApps() {
   const [isModalMinimized, setIsModalMinimized] =
     useRecoilState(isModalMinimizedAtom);
   const [showModals, setShowModals] = useRecoilState(showModalsAtom);
+  const [showFileExplorerFolder, setShowFileExplorerFolder] = useRecoilState(showFileExplorerFolderAtom)
 
   const handleAppClick = (prop) => {
+    if(prop === "fileExplorer") {
+      setShowFileExplorerFolder({showRoot:true, showSocials: false, showProjects:false})
+    }
     if (showModals[prop] && !isModalMinimized[prop]) {
       setIsModalMinimized((prev) => ({ ...prev, [prop]: true }));
     } else if (showModals[prop] && isModalMinimized[prop]) {
@@ -25,10 +30,6 @@ export default function ToolbarApps() {
     { src: "./photos.png", name: "backgrounds" },
     { src: "./gear.png", name: "skills" },
   ];
-
-  useEffect(() => {
-    console.log(showModals["contact"]);
-  }, [showModals]);
 
   return (
     <div className="h-full hidden md:flex">

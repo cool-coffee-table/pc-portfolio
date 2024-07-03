@@ -29,9 +29,6 @@ export default function CollegeFootballSchedule() {
     fetchGames();
   }, []);
 
-  useEffect(() => {
-    console.log(games);
-  }, [games]);
   return (
     <div className="realtive right-[272px] backdrop-blur-sm bg-white bg-opacity-5 p-3  rounded-sm min-h-[196px] mr-2 md:mt-2 md:mr-0 lg:mr-2 lg:mt-0">
       <p className="text-sm text-center mb-2">Recent Home Games:</p>

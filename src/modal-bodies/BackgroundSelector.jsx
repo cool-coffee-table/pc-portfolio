@@ -20,17 +20,17 @@ export default function BackgroundSelector() {
     document.body.style.backgroundImage = `url(${img})`
   };
   return (
-    <div className="px-2.5 py-3 overflow-y-auto max-h-full">
+    <div className="px-2 py-3 overflow-y-auto max-h-full">
       <h2 className="text-center text-xl semibold mb-2">
         Click To Select Background
       </h2>
-      <div className="flex justify-between">
-        <ul className="flex flex-col flex-wrap justify-between mb-4">
+      <div className="flex justify-between pl-1">
+        <ul className="flex flex-col flex-wrap mb-4 mr-1.5">
           {images.slice(0, images.length /2 ).map((img) => (
           <Background key={img} img={img} setBg={() => setBg(img)}/>
           ))}
         </ul>
-        <ul className="flex flex-col flex-wrap justify-between mb-4">
+        <ul className="flex flex-col flex-wrap mb-4">
           {images.slice(images.length / 2 ).map((img) => (
             <Background key={img} img={img} setBg={() => setBg(img)}/>
           ))}
@@ -48,7 +48,7 @@ function Background({ img, setBg }) {
         alt="bg"
         key={img}
         loading="lazy"
-        className="w-full max-w-[181px] rounded-md"
+        className="w-full rounded-md h-full"
       />
     </figure>
   );

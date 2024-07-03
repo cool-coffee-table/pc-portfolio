@@ -20,12 +20,12 @@ export default function LockscreenWeather() {
   };
 
   return (
-    <div className="bg-white bg-opacity-5 py-4 px-3 backdrop-blur-xl mb-2 rounded-sm w-full max-w-[222px]">
+    <div className="bg-white bg-opacity-5 py-4 px-3  backdrop-blur-xl mb-2 rounded-sm w-[220px] max-w-[222px]">
       <p className="text-center text-sm">Current Weather:</p>
       <p className="text-center">Gainesville Florida</p>
       {weather ? (
         <div className="flex mt-4 items-center">
-          <div className="text-4xl semibold mr-5">
+          <div className="text-4xl semibold mr-4">
             <span>{kelvinToF(weather.main.temp)}°F</span>
           </div>
           <div className="flex flex-col text-right">
